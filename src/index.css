@@ -10,10 +10,16 @@ nav{
   display: flex;
   align-items: center;
   height: 50px;
-  width: 100%;
   top: 0;
   left: 0;
   z-index: 1;
+  gap: 1em;
+}
+
+header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 nav > a {
@@ -21,7 +27,6 @@ nav > a {
   text-decoration: none;
   font-size: 2rem;
   font-weight: 200;
-  margin-right: 20px;
 }
 
 nav > a:hover{
@@ -32,7 +37,6 @@ nav > a:hover{
   height: 50px;
   width: 50px;
   border-radius: 50%;
-  margin-left: 14rem;
 }
 
 .study-quota{
@@ -99,7 +103,7 @@ nav > a:hover{
 }
 
 .review-color{
-  color: #7112EA;
+  color: #eeb123;
 }
 
 .learn-color{
@@ -114,7 +118,7 @@ nav > a:hover{
 
 .review{
   width: 45%;
-  border-left: #7112EA 4px solid;
+  border-left: #eeb123 4px solid;
   background-color: #363842;
   display: flex;
   flex-direction: row;
@@ -129,7 +133,7 @@ nav > a:hover{
   flex-direction: column;
   align-items: flex;
   justify-content: center;
-  background-color: #7112EA;
+  background-color: #eeb123;
   text-decoration: none;
   color: white;
   font-size: 0.8rem;

@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200&display=swap');
+
+body{
+  background-color: #151723;
+  color:white;
+  font-family: 'Inter', sans-serif;
+}
+
+nav{
+  display: flex;
+  align-items: center;
+  height: 50px;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+nav > a {
+  color: white;
+  text-decoration: none;
+  font-size: 2rem;
+  font-weight: 200;
+  margin-right: 20px;
+}
+
+nav > img{
+  height: 75px;
+  width: 75px;
+}
+
+nav > a:hover{
+  color: #FAD97F  ;
+}
+
+.study-quota{
+  background-color: #363842;
+  border-left: #11C3EA 4px solid;
+  display: flex;
+  flex-direction: column;
+}
+
+.study-quota > a{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #11C3EA;
+  text-decoration: none;
+  color: white;
+  font-size: 0.8rem;
+  width: 6rem;
+  height: 2rem;
+  border-radius: 0.5rem;
+  border: none;
+  margin: 1rem;
+  align-self: flex-end;
+
+}

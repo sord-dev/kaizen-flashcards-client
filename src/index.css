@@ -24,36 +24,149 @@ nav > a {
   margin-right: 20px;
 }
 
-nav > img{
-  height: 75px;
-  width: 75px;
-}
-
 nav > a:hover{
   color: #FAD97F  ;
+}
+
+.profile-img {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  margin-left: 14rem;
 }
 
 .study-quota{
   background-color: #363842;
   border-left: #11C3EA 4px solid;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  align-items: center;
 }
 
 .study-quota > a{
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex;
   justify-content: center;
   background-color: #11C3EA;
   text-decoration: none;
   color: white;
   font-size: 0.8rem;
-  width: 6rem;
+  width: 8rem;
   height: 2rem;
   border-radius: 0.5rem;
   border: none;
-  margin: 1rem;
+  margin: 5px;
   align-self: flex-end;
+}
 
+.quota-title{
+  font-size: 1.2rem;
+  color: #11C3EA;
+}
+
+.streak-count{
+  font-size: 1.2rem;
+  color: #11C3EA;
+}
+
+.quota-block1{
+  margin: 1rem;
+  display: flex;
+  height: 12rem;
+  width: 14rem;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.quota-block1 > img{
+  width: 8rem;
+}
+
+.quota-block2{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  margin: 1rem;
+  width: 30rem;
+}
+
+.reviews{
+  margin-right: 1rem;
+}
+
+.review-color{
+  color: #7112EA;
+}
+
+.learn-color{
+  color: #12EA1A;
+}
+
+.block-container{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.review{
+  width: 45%;
+  border-left: #7112EA 4px solid;
+  background-color: #363842;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 2rem;
+  padding: 1rem;
+}
+
+.review > a{
+  display: flex;
+  flex-direction: column;
+  align-items: flex;
+  justify-content: center;
+  background-color: #7112EA;
+  text-decoration: none;
+  color: white;
+  font-size: 0.8rem;
+  width: 8rem;
+  height: 2rem;
+  border-radius: 0.5rem;
+  border: none;
+  margin: 5px;
+  align-self: flex-end;
+}
+
+.learn{
+  width: 45%;
+  border-left: #12EA1A 4px solid;
+  background-color: #363842;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 2rem;
+  margin-left: 1rem;
+  padding: 1rem;
+}
+
+.learn > a{
+  display: flex;
+  flex-direction: column;
+  align-items: flex;
+  justify-content: center;
+  background-color: #12EA1A;
+  text-decoration: none;
+  color: white;
+  font-size: 0.8rem;
+  width: 8rem;
+  height: 2rem;
+  border-radius: 0.5rem;
+  border: none;
+  margin: 5px;
+  align-self: flex-end;
 }

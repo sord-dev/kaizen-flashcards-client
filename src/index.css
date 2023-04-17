@@ -1,69 +1,176 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200&display=swap');
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
+body{
+  background-color: #151723;
+  color:white;
+  font-family: 'Inter', sans-serif;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
-  margin: 0;
+nav{
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  align-items: center;
+  height: 50px;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  gap: 1em;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+nav > a {
+  color: white;
+  text-decoration: none;
+  font-size: 2rem;
+  font-weight: 200;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+nav > a:hover{
+  color: #FAD97F  ;
+}
+
+.profile-img {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+}
+
+.study-quota{
+  background-color: #363842;
+  border-left: #11C3EA 4px solid;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.study-quota > a{
+  display: flex;
+  flex-direction: column;
+  align-items: flex;
+  justify-content: center;
+  background-color: #11C3EA;
+  text-decoration: none;
+  color: white;
+  font-size: 0.8rem;
+  width: 8rem;
+  height: 2rem;
+  border-radius: 0.5rem;
+  border: none;
+  margin: 5px;
+  align-self: flex-end;
+}
+
+.quota-title{
+  font-size: 1.2rem;
+  color: #11C3EA;
+}
+
+.streak-count{
+  font-size: 1.2rem;
+  color: #11C3EA;
+}
+
+.quota-block1{
+  margin: 1rem;
+  display: flex;
+  height: 12rem;
+  width: 14rem;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.quota-block1 > img{
+  width: 8rem;
+}
+
+.quota-block2{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  margin: 1rem;
+  width: 30rem;
+}
+
+.reviews{
+  margin-right: 1rem;
+}
+
+.review-color{
+  color: #eeb123;
+}
+
+.learn-color{
+  color: #12EA1A;
+}
+
+.block-container{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.review{
+  width: 45%;
+  border-left: #eeb123 4px solid;
+  background-color: #363842;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 2rem;
+  padding: 1rem;
+}
+
+.review > a{
+  display: flex;
+  flex-direction: column;
+  align-items: flex;
+  justify-content: center;
+  background-color: #eeb123;
+  text-decoration: none;
+  color: white;
+  font-size: 0.8rem;
+  width: 8rem;
+  height: 2rem;
+  border-radius: 0.5rem;
+  border: none;
+  margin: 5px;
+  align-self: flex-end;
+}
+
+.learn{
+  width: 45%;
+  border-left: #12EA1A 4px solid;
+  background-color: #363842;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 2rem;
+  margin-left: 1rem;
+  padding: 1rem;
+}
+
+.learn > a{
+  display: flex;
+  flex-direction: column;
+  align-items: flex;
+  justify-content: center;
+  background-color: #12EA1A;
+  text-decoration: none;
+  color: white;
+  font-size: 0.8rem;
+  width: 8rem;
+  height: 2rem;
+  border-radius: 0.5rem;
+  border: none;
+  margin: 5px;
+  align-self: flex-end;
 }

@@ -22,6 +22,21 @@ export const AuthContextProvider = ({ children }) => {
         }
     }
 
+    const register = async userData => {
+        let options = { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(userData) }
+        let response = await fetch('http://localhost:3000/auth/register', options);
+
+        if (response.ok) {
+            let user = await response.json();
+            localStorage.setItem('user', JSON.stringify(user));
+            setUser(user);
+            redirect('/');
+        } else {
+            let error = await response.json();
+            setError(error.error);
+        }
+    }
+
     const logout = async () => {
         let response = await fetch('http://localhost:3000/auth/logout');
         localStorage.removeItem('user');
@@ -40,7 +55,7 @@ export const AuthContextProvider = ({ children }) => {
     }, [user])
 
     return (
-        <AuthContext.Provider value={{ user, error, login, logout }}>
+        <AuthContext.Provider value={{ user, error, login, logout, register }}>
             {children}
         </AuthContext.Provider>
     );

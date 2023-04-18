@@ -6,7 +6,7 @@ expect.extend(matchers)
 
 import { BrowserRouter } from "react-router-dom";
 
-import { Table } from "../components/Table";
+import { Table } from "../components";
 
 describe("Table component", () => {
 

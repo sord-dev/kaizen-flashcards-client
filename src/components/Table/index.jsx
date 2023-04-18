@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './styles.module.css'
 import { Link } from 'react-router-dom'
 
-export function Table({ items = [] }) {
+export default function Table({ items = [] }) {
     return (
         <div className={styles["table"]}>
             <header className={styles["table-head"]}>

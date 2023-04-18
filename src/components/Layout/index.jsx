@@ -2,7 +2,7 @@ import React from 'react'
 import { NavLink, Outlet } from 'react-router-dom'
 import styles from './styles.module.css'
 
-export function Layout() {
+export default function Layout() {
   const linkStyles = ({ isActive }) => ({
     textDecoration: isActive ? 'underline #FAD97F' : 'none',
   })
@@ -16,7 +16,7 @@ export function Layout() {
           <NavLink to="decks" style={linkStyles}>Decks</NavLink>
           <NavLink to="calender" style={linkStyles}>Calender</NavLink>
         </nav>
-        <a href="#" ><img className='profile-img' src="https://static.vecteezy.com/system/resources/previews/007/033/146/original/profile-icon-login-head-icon-vector.jpg" alt="" /></a>
+        <a href="#" ><img className='profile-img' src="https://static.vecteezy.com/system/resources/previews/007/033/146/original/profile-icon-login-head-icon-vector.jpg" alt="profile image" /></a>
       </header>
       <main>
         <Outlet />

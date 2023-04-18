@@ -1,12 +1,11 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 
 import { UserForm } from '../../components'
-import { useNavigate } from 'react-router-dom'
+import { useAuthContext } from '../../contexts/authContext'
 
 export default function Login() {
-    const [error, setError] = useState(null);
-    const redirect = useNavigate()
+    const { login, error } = useAuthContext()
 
     const handleSubmit = async e => {
         e.preventDefault()
@@ -16,20 +15,6 @@ export default function Login() {
         let user = { username: data.get('username'), password: data.get('password') }
 
         await login(user);
-    }
-
-    const login = async userData => {
-        let options = { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(userData) }
-        let response = await fetch('http://localhost:3000/auth/login', options);
-
-        if(response.ok) {
-            let user = await response.json();
-            console.log(user);
-            redirect('/')
-        }else {
-            let error = await response.json();
-            setError(error.error)
-        }
     }
 
     return (

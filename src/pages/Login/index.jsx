@@ -20,7 +20,7 @@ export default function Login() {
 
     const login = async userData => {
         let options = { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(userData) }
-        let response = await fetch('http://localhost:3000/api/auth/login', options);
+        let response = await fetch('http://localhost:3000/auth/login', options);
 
         if(response.ok) {
             let user = await response.json();

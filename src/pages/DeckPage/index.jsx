@@ -49,8 +49,6 @@ export default function DeckPage() {
         getDeck()
     }, [])
 
-
-
     return (
         <div style={{ color: theme.primText }}>
             <h1>{deck.name}</h1>

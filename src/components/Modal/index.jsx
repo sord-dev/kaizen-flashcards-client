@@ -13,6 +13,7 @@ export default function Modal({open, close, title, addDeck, buttonLabel = 'Add D
             <h2>{title}</h2>
             <input id='newDeckInput' value={deckName} onChange={(e) => setDeckName(e.target.value)}></input>
             <div className='btnContainer'>
+                
                 <button className='btnTheme' type='submit' id='btnAddDeck' onClick={() => addDeck(deckName)}>{buttonLabel}</button>
                 <button className='btnTheme' type='button' id='btnAddDeck' onClick={close}>Cancel</button>
             </div>

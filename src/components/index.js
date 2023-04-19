@@ -6,3 +6,4 @@ export {default as SummaryCard} from './SummaryCard'
 export {default as UserStatisticsDisplay} from './UserStatisticsDisplay'
 export {default as Card} from './Card'
 export {default as Modal} from './Modal'
+export{default as NewCardForm} from "./NewCardForm"

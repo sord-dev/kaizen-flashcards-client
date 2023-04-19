@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { useTheme } from '../../contexts'
-import { Modal } from '../../components'
+import { Modal,NewCardForm } from '../../components'
 import { useNavigate, useParams } from 'react-router-dom'
 
 export default function DeckPage() {
+    const[showForm , setShowForm] = useState(false)
     const navigate = useNavigate()
     const [deck, setCards] = useState({ cards: []})
     const { deck_id } = useParams()
@@ -12,6 +13,7 @@ export default function DeckPage() {
 
     const addCard = (e) => {
         e.preventDefault()
+       // setShowForm(true)
         setOpenModal(true)
     }
 
@@ -34,13 +36,13 @@ export default function DeckPage() {
                 <button className='btnTheme' onClick={addCard}>+ Add Card</button>
                 {deck?.cards.length ? <button className='btnTheme' onClick={() => navigate('learn')}>Start Learning</button> : null}
             </div>
-           
+            {showForm ? <NewCardForm deck_id = {deck_id}/> : null}
             <div>
-                <Modal open={openModal} close={() => setOpenModal(false)} title='Add new card' />
             </div>
         </div>
     )
 }
+//<Modal open={openModal} close={() => setOpenModal(false)} title='Add new card' />
 
 
 // card list

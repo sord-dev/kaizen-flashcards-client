@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import { useTheme } from '../../contexts'
 import { useNavigate } from 'react-router-dom'
-import { Modal } from '../../components'
+import { Modal,NewCardForm } from '../../components'
 import { useAuthContext } from '../../contexts/authContext'
 
 export default function DecksPage() {
     const { user } = useAuthContext()
-
     const [decks, setDecks] = useState([])
     const [openModal, setOpenModal] = useState()
     
     const addDecks = (e) => {
         e.preventDefault()
-        setOpenModal(true)
+
+         setOpenModal(true)
     }
     
     const handleCreateDeck = async (name) => {
@@ -43,13 +43,12 @@ export default function DecksPage() {
             <div className='deck-list'>
                 {decks.map(d => (<DeckCard key={d.deck_id} deck={d} />))}
             </div>
-
             <div>
-                <Modal open={openModal} close={() => setOpenModal(false)} title='Add new deck' addDeck={handleCreateDeck}></Modal>
             </div>
         </div>
     )
 }
+//<Modal open={openModal} close={() => setOpenModal(false)} title='Add new deck' addDeck={handleCreateDeck}></Modal>
 
 function DeckCard({ deck }) {
     const { theme } = useTheme();

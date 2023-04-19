@@ -9,7 +9,7 @@ export default function Modal({open, close, title, addDeck, buttonLabel = 'Add D
 
     return (
         <div className='overlay'>
-        <div className="modalContainer" style={{backgroundColor: `${theme.secColor}`, color: `${theme.primColor}`}}>
+        <div className="modalContainer" style={{backgroundColor: `${theme.primBG}`, color: `${theme.primText}`}}>
             <h2>{title}</h2>
             <input id='newDeckInput' value={deckName} onChange={(e) => setDeckName(e.target.value)}></input>
             <div className='btnContainer'>

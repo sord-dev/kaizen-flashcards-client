@@ -1,10 +1,9 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { NavLink, Outlet } from 'react-router-dom'
 import styles from './styles.module.css'
 import Switch from "react-switch"
 import { useState } from 'react'
 import { useTheme } from '../../contexts'
-import { Dropdown } from './dropdown'
 
 export default function Layout() {
   const [dropdownActive, setdropdownActive] = useState(false)
@@ -15,18 +14,22 @@ export default function Layout() {
     // textDecoration: isActive ? 'underline #FAD97F' : 'none'
     color: isActive ? `${theme.accentColor}` : `${theme.primText}`, padding: '0 10px 0 10px', border: isActive ? `1px solid ${theme.accentColor}` : "1px solid transparent", borderRadius: 10
   })
-  
+
   function handleChange(e) {
     if (checked) {
-      setTheme({'primColor': '#ffffff', 'SecColor': '#151723', 'primText': '#333333', 'secText': '#8ed1fc', 'primBG': '#E6E6E6', 'secBG': "#363842", 'accentColor': '#FAD97F', 'darkMode': false})
+      setTheme({ 'primColor': '#ffffff', 'SecColor': '#151723', 'primText': '#333333', 'secText': '#8ed1fc', 'primBG': '#E6E6E6', 'secBG': "#363842", 'accentColor': '#FAD97F', 'darkMode': false })
       setChecked(false)
     }
     else {
-      
-      setTheme({'primColor': '#151723', 'SecColor': '#ffffff', 'primText': '#8ed1fc', 'secText': '#333333', 'primBG': '#363842', 'secBG': "#F2F2F2", 'accentColor': '#FAD97F', 'darkMode': true})
+
+      setTheme({ 'primColor': '#151723', 'SecColor': '#ffffff', 'primText': '#8ed1fc', 'secText': '#333333', 'primBG': '#363842', 'secBG': "#F2F2F2", 'accentColor': '#FAD97F', 'darkMode': true })
       setChecked(true)
     }
   }
+
+  useEffect(() => {
+    console.log(dropdownActive);
+  }, [dropdownActive])
 
   return (
     <div style={{ color: `${theme.secColor}` }}>
@@ -36,10 +39,10 @@ export default function Layout() {
           <NavLink to="stats" style={linkStyles}>Statistics</NavLink>
           <NavLink to="decks" style={linkStyles}>Decks</NavLink>
         </nav>
-        <div class="dropdown">
-          <button class="dropbtn" onclick={Dropdown}>
-          <i class="fa-regular fa-user"></i>
-         </button>
+        <div className={dropdownActive ? "dropdown active" : "dropdown"}>
+          <button class="dropbtn" onClick={() => setdropdownActive(prev => !prev)}>
+            <i className="fa-regular fa-user"></i>
+          </button>
           <div id="myDropdown" class="dropdown-content">
             <a href="#">Link 1</a>
             <a href="#">Link 2</a>
@@ -64,14 +67,14 @@ export default function Layout() {
             width={48}
             className="react-switch"
             id="material-switch"
-            />
+          />
         </label>
       </div>
       <main>
         <Outlet />
       </main>
 
-      <footer className={styles.footer} style={{color: `${theme.primText}`}}>
+      <footer className={styles.footer} style={{ color: `${theme.primText}` }}>
         <p>made with ❤️ by people <a href="http://" target="_blank" rel="noopener noreferrer"></a></p>
 
         <p>kaizen</p>

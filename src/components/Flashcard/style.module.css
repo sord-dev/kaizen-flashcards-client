@@ -1,0 +1,5 @@
+.card-border {
+    border-left-width: 20px;
+    border-left-style: solid;
+    border-image: linear-gradient(#78e4ff, #ff48fa) 1;
+}

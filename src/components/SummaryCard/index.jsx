@@ -22,7 +22,7 @@ export default function SummaryCard({ cards, deck_id }) {
 
 
             <div className={styles["action-group"]}>
-                <Link to={`/${deck_id}/learn`}><button>Start Learning</button></Link>
+                <Link to={`learn`}><button>Start Learning</button></Link>
                 <button>Edit Deck</button>
             </div>
 

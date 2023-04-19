@@ -41,6 +41,7 @@ export const AuthContextProvider = ({ children }) => {
     const logout = async () => {
         let response = await fetch('http://localhost:3000/auth/logout');
         localStorage.removeItem('user');
+        localStorage.removeItem("token")
         redirect('/login');
     }
 

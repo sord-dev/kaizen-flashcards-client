@@ -39,7 +39,7 @@ export default function Layout() {
       </header>
       <div style={{ display: 'flex', justifyContent: 'end', marginTop: 30 }}>
         <label htmlFor="material-switch" style={{ display: 'flex', alignItems: 'center' }}>
-          <span style={{ marginRight: 10 }}>Dark Mode </span>
+          <span style={{ marginRight: 10, color: theme.primText }}>Dark Mode </span>
           <Switch
             checked={checked}
             onChange={handleChange}
@@ -60,7 +60,7 @@ export default function Layout() {
         <Outlet />
       </main>
 
-      <footer className={styles.footer}>
+      <footer className={styles.footer} style={{ color: theme.primText}}>
         <p>made with ❤️ by people <a href="http://" target="_blank" rel="noopener noreferrer"></a></p>
 
         <p>kaizen</p>

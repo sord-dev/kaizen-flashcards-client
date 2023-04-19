@@ -1,18 +1,15 @@
 import React, { useEffect, useState } from 'react'
 
-import { Table } from '../../components'
+import { Table,DeckNameForm } from '../../components'
 import { useAuthContext } from '../../contexts/authContext'
 
 export default function DecksPage() {
     const { user } = useAuthContext()
     const [decks, setDecks] = useState([])
-
-    const handleCreateDeck = async () => {
-        const deck = {user_id: user.user_id, name: "new deck"}
-        let options = { method: "POST", headers: { 'Content-Type': 'application/json'}, body: JSON.stringify(deck) } 
-        let deck_id = await (await fetch("http://localhost:3000/deck/new", options)).json()
-
-        setDecks(prev => [...prev, {...deck, deck_id}]) 
+    const [deckname,setdeckname] = useState("")
+    const [showForm,setShowForm] = useState(false)
+    const handleDeckNameForm = async ()=>{
+        setShowForm(true)
     }
 
     useEffect(() => { // get decks 
@@ -28,7 +25,8 @@ export default function DecksPage() {
     return (
         <>
             <h1 style={{ textAlign: 'center' }}>All Decks</h1>
-            <Table items={decks} onClick={handleCreateDeck} />
+            <Table items={decks} onClick={handleDeckNameForm} />
+            {showForm ? <DeckNameForm setShowForm ={setShowForm} setdeckname = {setDecks}/> : null }
         </>
     )
 }

@@ -2,7 +2,7 @@
 
 body{
   background-color: #151723;
-  color:white;
+  /* color:white; */
   font-family: 'Inter', sans-serif;
 }
 
@@ -23,7 +23,7 @@ header{
 }
 
 nav > a {
-  color: white;
+  /* color: white; */
   text-decoration: none;
   font-size: 2rem;
   font-weight: 200;
@@ -45,6 +45,7 @@ nav > a:hover{
   display: flex;
   flex-direction: row;
   align-items: center;
+  color: white;
 }
 
 .study-quota > a{
@@ -100,6 +101,7 @@ nav > a:hover{
 
 .reviews{
   margin-right: 1rem;
+
 }
 
 .review-color{
@@ -114,6 +116,8 @@ nav > a:hover{
   display: flex;
   flex-direction: row;
   align-items: center;
+  color: white;
+
 }
 
 .review{

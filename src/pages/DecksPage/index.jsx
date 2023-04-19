@@ -40,11 +40,11 @@ export default function DecksPage() {
 
     return (
         <div>
-            <button className='btnTheme' onClick={addDecks}>+ Add Decks</button>
-
             <div className='deck-list'>
-                {decks.map(d => (<DeckCard key={d.deck_id} deck={d} />))}
+                {decks.length ? decks.map(d => (<DeckCard key={d.deck_id} deck={d} />)) : <h3>Add some decks to study from above!</h3>}
             </div>
+
+            <button className='btnTheme' onClick={addDecks}>+ Add Decks</button>
 
             <div>
                 <Modal open={openModal}>

@@ -8,7 +8,7 @@ export default function DeckPage() {
     const [deck, setDeck] = useState({ cards: [] })
     const { deck_id } = useParams()
     const [openModal, setOpenModal] = useState(false)
-    const [newCardDetails, setNewCardDetails] = useState({ username: "", description: "", answer: "" })
+    const [newCardDetails, setNewCardDetails] = useState({ question: "", description: "", answer: "" })
     const { theme } = useTheme()
 
     function handleCreateCard() {
@@ -49,11 +49,16 @@ export default function DeckPage() {
             <div>
                 <Modal open={openModal}>
                     <h2>Add new Card</h2>
-                    <input value={newCardDetails.username} onChange={(e) => setNewCardDetails(prev => ({ ...prev, username: e.target.value }))} />
-                    <input value={newCardDetails.description} onChange={(e) => setNewCardDetails(prev => ({ ...prev, description: e.target.value }))} />
-                    <input value={newCardDetails.answer} onChange={(e) => setNewCardDetails(prev => ({ ...prev, answer: e.target.value }))} />
+                    <div style={{textAlign: 'left', width: '375px', margin: '0 auto'}}>
+                        <label htmlFor="question">Question</label>
+                        <input  style={{ width: '100%' }} value={newCardDetails.question} onChange={(e) => setNewCardDetails(prev => ({ ...prev, question: e.target.value }))} />
+                        <label htmlFor="description">Description</label>
+                        <input style={{ width: '100%' }} value={newCardDetails.description} onChange={(e) => setNewCardDetails(prev => ({ ...prev, description: e.target.value }))} />
+                        <label htmlFor="answer">Answer</label>
+                        <input style={{ width: '100%' }} value={newCardDetails.answer} onChange={(e) => setNewCardDetails(prev => ({ ...prev, answer: e.target.value }))} />
+                    </div>
                     <div className='btnContainer'>
-                        <button className='btnTheme' type='submit' id='btnAddDeck' onClick={() => handleCreateCard(newCardDetails.username, newCardDetails.description, newCardDetails.answer)}>Create Card</button>
+                        <button className='btnTheme' type='submit' id='btnAddDeck' onClick={() => handleCreateCard(newCardDetails.question, newCardDetails.description, newCardDetails.answer)}>Create Card</button>
                         <button className='btnTheme' type='button' id='btnAddDeck' onClick={() => setOpenModal(false)}>Cancel</button>
                     </div>
                 </Modal>

@@ -5,7 +5,7 @@ import { UserForm } from '../../components'
 import { useAuthContext } from '../../contexts/authContext'
 
 export default function Login() {
-    const { login, error } = useAuthContext()
+    const { register, error } = useAuthContext()
 
     const handleSubmit = async e => {
         e.preventDefault()
@@ -14,13 +14,13 @@ export default function Login() {
 
         let user = { username: data.get('username'), password: data.get('password') }
 
-        await login(user);
+        await register(user);
     }
 
     return (
         <div>
             <UserForm onSubmit={handleSubmit} error={error}>
-                <p>Don't have an account? <Link to={'/register'}>Sign up</Link></p>
+                <p>Already have an account? <Link to={'/login'}>Login</Link></p>
             </UserForm>
         </div>
     )

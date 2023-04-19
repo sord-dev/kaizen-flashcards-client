@@ -1,0 +1,35 @@
+.stats-display {
+  background-color: #363842;
+  border-left: #12c3ea 4px solid;
+  padding: 12px 24px;
+  text-align: left;
+}
+
+.stats-display h2 {
+  margin: 0;
+  color: #12c3ea;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin: 0 auto;
+  width: 80%;
+}
+
+.stats-grid div {
+  font-size: 1.1em;
+}
+
+.stats-grid div span {
+  color: #12c3ea;
+}
+
+@media screen and (max-width: 800px) {
+  .stats-grid {
+    display: flex;
+    gap: 2em;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+}

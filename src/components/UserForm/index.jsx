@@ -1,7 +1,7 @@
 import styles from './styles.module.css'
 import logo from '../../assets/imgs/Kaizen-icon.svg'
 
-export function UserForm({ onSubmit = e => { e.preventDefault() }, children, error }) {
+export default function UserForm({ onSubmit = e => { e.preventDefault() }, children, error }) {
     return (
         <form className={styles["user-form"]} onSubmit={onSubmit}>
             <div className={styles["logo"]}>

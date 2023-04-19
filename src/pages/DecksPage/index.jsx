@@ -29,7 +29,7 @@ export default function DecksPage() {
     }
     useEffect(() => { // get decks 
         const getDecks = async () => {
-            let options = { method: "GET", headers: { 'Content-Type': 'application/json',"authorization" : localStorage.getItem("token")}  }
+            let options = { method: "POST", headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({user_id: user.user_id}) }
             let decks = await (await fetch("http://localhost:3000/deck", options)).json()
             console.log(decks);
             setDecks(decks)

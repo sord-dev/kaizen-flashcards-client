@@ -25,7 +25,7 @@ export default function SummaryCard({ cards, deck_id }) {
                 <Link to={`learn`}><button>Start Learning</button></Link>
                 <button>Edit Deck</button>
             </div>
-
+        
 
         </div>
     )

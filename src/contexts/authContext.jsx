@@ -14,6 +14,7 @@ export const AuthContextProvider = ({ children }) => {
         if (response.ok) {
             let user = await response.json();
             localStorage.setItem('user', JSON.stringify(user));
+            localStorage.setItem("token", user.token)
             setUser(user);
             redirect('/');
         } else {
@@ -29,6 +30,7 @@ export const AuthContextProvider = ({ children }) => {
         if (response.ok) {
             let user = await response.json();
             localStorage.setItem('user', JSON.stringify(user));
+            localStorage.setItem("token", user.token)
             setUser(user);
             redirect('/');
         } else {

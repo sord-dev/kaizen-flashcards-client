@@ -1,15 +1,16 @@
 import React from 'react'
 
-export default function deckNameForm({setShowForm,setdeckname}) {
+export default function deckNameForm({setShowForm}) {
     const handleSub = (e)=>{
         e.preventDefault();
         const name = e.target.deckName.value;
         setShowForm(false)
+         handleCreateDeck(name)
     }
-    const handleCreateDeck = async () => {
-         const deck = {user_id: user.user_id, name: ""}
+    const handleCreateDeck = async (Name) => {
+         const deck = { name: Name }
          let options = { method: "POST", headers: { 'Content-Type': 'application/json'
-        // ,"authorization" : localStorage.getItem("token")
+         ,"authorization" : localStorage.getItem("token")
         }, body: JSON.stringify(deck) } 
          let deck_id = await (await fetch("http://localhost:3000/deck/new", options)).json()
 

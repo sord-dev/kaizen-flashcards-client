@@ -1,21 +1,23 @@
 import React, { useEffect, useState } from 'react'
 import { useTheme } from '../../contexts'
 import { useNavigate } from 'react-router-dom'
-import { Modal } from '../../components'
+import { Modal,NewCardForm } from '../../components'
 import { useAuthContext } from '../../contexts/authContext'
 
 export default function DecksPage() {
     const { user } = useAuthContext()
-
     const [decks, setDecks] = useState([])
     const [openModal, setOpenModal] = useState()
     const [deckName, setDeckName] = useState()
 
     const addDecks = (e) => {
         e.preventDefault()
-        setOpenModal(true)
-    }
 
+         setOpenModal(true)
+    }
+    const remove=()=>{
+        console.log("hello")
+    }
     const handleCreateDeck = async (name) => {
         const deck = { user_id: user.user_id, name }
         let options = { method: "POST", headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(deck) }
@@ -25,15 +27,13 @@ export default function DecksPage() {
         setDecks(prev => [...prev, { ...deck, deck_id }])
         setOpenModal(false)
     }
-
     useEffect(() => { // get decks 
         const getDecks = async () => {
-            let options = { method: "GET", headers: { 'Content-Type': 'application/json',"authorization" : user.Token}  }
+            let options = { method: "GET", headers: { 'Content-Type': 'application/json',"authorization" : localStorage.getItem("token")}  }
             let decks = await (await fetch("http://localhost:3000/deck", options)).json()
             console.log(decks);
             setDecks(decks)
         }
-
         getDecks()
     }, [])
 
@@ -59,10 +59,15 @@ export default function DecksPage() {
         </div>
     )
 }
+//<Modal open={openModal} close={() => setOpenModal(false)} title='Add new deck' addDeck={handleCreateDeck}></Modal>
 
 function DeckCard({ deck }) {
     const { theme } = useTheme();
-
+    const remove = {
+        border : "none",
+        color : "red",
+        backgroundColor:"inherit"
+    }
     const goTo = useNavigate();
 
     let { name, user_id, deck_id } = deck;

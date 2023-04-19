@@ -46,6 +46,7 @@ nav > a:hover{
   flex-direction: row;
   align-items: center;
   color: white;
+  padding: 1rem;
 }
 
 .study-quota > a{
@@ -64,6 +65,7 @@ nav > a:hover{
   margin: 5px;
   align-self: flex-end;
 }
+
 
 .quota-title{
   font-size: 1.2rem;

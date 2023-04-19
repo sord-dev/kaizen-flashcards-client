@@ -7,7 +7,7 @@ export function Modal({open, close, title, newDeck}) {
 
     return (
         <div className='overlay'>
-        <div className="modalContainer" style={{backgroundColor: `${theme.secColor}`, color: `${theme.primColor}`}}>
+        <div className="modalContainer" style={{backgroundColor: `${theme.primBG}`, color: `${theme.primText}`}}>
             <h2>{title}</h2>
             <input id='newDeckInput' value={newDeck}></input>
             <div className='btnContainer'>

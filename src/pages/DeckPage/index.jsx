@@ -33,7 +33,7 @@ export default function DeckPage() {
             const color = '#' + Math.floor(Math.random() * 16777215).toString(16)        
 
                 return (
-                    <div className='card' key={index} style={{backgroundColor: `${theme.secBG}`, color:`${theme.primText}`, borderLeft: `20px solid ${color}`}}>
+                    <div className='card' key={index} style={{backgroundColor: `${theme.primBG}`, color:`${theme.primText}`, borderLeft: `20px solid ${color}`}}>
                         <p className='card-content'>{card}</p>
                     </div>
                 )

@@ -15,12 +15,12 @@ export function Layout() {
   
   function handleChange() {
     if (checked) {
-      setTheme({'primColor': '#ffffff', 'SecColor': '#151723', 'primText': '#333333', 'secText': '#6EC1E4', 'primBG': '#363842', 'secBG': "#F5F5F5", 'accentColor': '#FAD97F', 'darkMode': false})
+      setTheme({'primColor': '#ffffff', 'SecColor': '#151723', 'primText': '#333333', 'secText': '#8ed1fc', 'primBG': '#E6E6E6', 'secBG': "#363842", 'accentColor': '#FAD97F', 'darkMode': false})
       setChecked(false)
     }
     else {
       
-      setTheme({'primColor': '#151723', 'SecColor': '#ffffff', 'primText': '#6EC1E4', 'secText': '#333333', 'primBG': '#F5F5F5', 'secBG': "#363842", 'accentColor': '#FAD97F', 'darkMode': true})
+      setTheme({'primColor': '#151723', 'SecColor': '#ffffff', 'primText': '#8ed1fc', 'secText': '#333333', 'primBG': '#363842', 'secBG': "#F2F2F2", 'accentColor': '#FAD97F', 'darkMode': true})
       setChecked(true)
     }
   }
@@ -59,7 +59,7 @@ export function Layout() {
         <Outlet />
       </main>
 
-      <footer className={styles.footer}>
+      <footer className={styles.footer} style={{color: `${theme.primText}`}}>
         <p>made with ❤️ by people <a href="http://" target="_blank" rel="noopener noreferrer"></a></p>
 
         <p>kaizen</p>

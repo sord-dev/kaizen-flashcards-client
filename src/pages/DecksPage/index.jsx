@@ -10,19 +10,17 @@ export default function DecksPage() {
     const [decks, setDecks] = useState([])
     const [openModal, setOpenModal] = useState()
     
-
-
     const addDecks = (e) => {
         e.preventDefault()
         setOpenModal(true)
     }
     
-
     const handleCreateDeck = async (name) => {
-        const deck = {user_id: user.user_id, name }
+        const deck = { user_id: user.user_id, name }
         let options = { method: "POST", headers: { 'Content-Type': 'application/json'}, body: JSON.stringify(deck) } 
         let deck_id = await (await fetch("http://localhost:3000/deck/new", options)).json()
 
+        console.log(deck_id);
         setDecks(prev => [...prev, {...deck, deck_id}]) 
     }
 

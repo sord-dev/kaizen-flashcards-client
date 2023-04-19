@@ -42,7 +42,7 @@ export default function Layout() {
           <span style={{ marginRight: 10, color: theme.primText }}>Dark Mode </span>
           <Switch
             checked={checked}
-            onChange={handleChange}
+            onChange={(e) => handleChange(e)}
             onColor="#86d3ff"
             onHandleColor="#2693e6"
             handleDiameter={30}
@@ -53,7 +53,8 @@ export default function Layout() {
             height={20}
             width={48}
             className="react-switch"
-            id="material-switch" />
+            id="material-switch"
+            />
         </label>
       </div>
       <main>

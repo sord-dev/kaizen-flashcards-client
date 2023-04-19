@@ -33,6 +33,11 @@ nav > a:hover{
   color: #FAD97F  ;
 }
 
+.fa-user{
+  color: #11C3EA;
+  font-size: 2rem;
+}
+
 .profile-img {
   height: 50px;
   width: 50px;

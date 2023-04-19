@@ -2,7 +2,7 @@ import React from 'react'
 import { NavLink, Outlet } from 'react-router-dom'
 import styles from './styles.module.css'
 
-export function Layout() {
+export default function Layout() {
   const linkStyles = ({ isActive }) => ({
     textDecoration: isActive ? 'underline #FAD97F' : 'none',
   })

@@ -1,0 +1,31 @@
+.summary-card {
+    border: 1px solid rgba(255, 255, 255, 0.086);
+    padding: 12px 24px;
+    width: 60%;
+    margin: 0 auto;
+}
+
+
+.summary-card button{
+    padding: 12px 24px;
+    background-color: #11C3EA;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: .9em;
+    font-weight: 600;
+    cursor: pointer;
+    letter-spacing: .051px;
+    transition: background-color 300ms;
+  }
+  
+  .summary-card button:hover {
+    background-color: #1E90FF;
+  }
+
+  .action-group {
+    display: flex; 
+    gap: 1em;
+    align-items: center;
+    justify-content: center;
+  }

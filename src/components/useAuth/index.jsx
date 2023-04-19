@@ -3,7 +3,7 @@ import React from 'react'
 import { Outlet, Navigate } from 'react-router-dom'
 import { useAuthContext } from '../../contexts/authContext'
 
-export function UseAuth() {
+export default function UseAuth() {
     const { user } = useAuthContext()
 
     return (

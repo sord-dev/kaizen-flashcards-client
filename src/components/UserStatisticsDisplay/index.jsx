@@ -1,9 +1,11 @@
+import { useTheme } from '../../contexts'
 import styles from './styles.module.css'
 
 export default function UserStatisticsDisplay() {
+    const { theme } = useTheme()
     return (
-        <div className={styles['stats-display']}>
-            <h2>User Statistics</h2>
+        <div className={styles['stats-display']} style={{backgroundColor: `${theme.primBG}`, color: `${theme.primText}`}}>
+            <h2 style={{color: theme.primText}}>User Statistics</h2>
 
             <div className={styles['stats-grid']}>
                 <UserStatGridItem tag={'Total Seen Cards'} description={'These are all the cards you’ve seen.'} number={0} />

@@ -8,6 +8,7 @@ body{
 
 nav{
   display: flex;
+  overflow: hidden;
   align-items: center;
   height: 50px;
   top: 0;
@@ -33,6 +34,48 @@ nav > a:hover{
   color: #FAD97F  ;
 }
 
+.fa-user{
+  color: #11C3EA;
+  font-size: 2rem;
+}
+
+.dropdown{
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+  cursor: pointer;
+  font-size: 16px;  
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.show {display:block;}
+
+
 .profile-img {
   height: 50px;
   width: 50px;
@@ -45,7 +88,8 @@ nav > a:hover{
   display: flex;
   flex-direction: row;
   align-items: center;
-  color: white;
+  color: #333;
+  padding: 1rem;
 }
 
 .study-quota > a{
@@ -55,7 +99,7 @@ nav > a:hover{
   justify-content: center;
   background-color: #11C3EA;
   text-decoration: none;
-  color: white;
+  color:#333;
   font-size: 0.8rem;
   width: 8rem;
   height: 2rem;
@@ -64,6 +108,7 @@ nav > a:hover{
   margin: 5px;
   align-self: flex-end;
 }
+
 
 .quota-title{
   font-size: 1.2rem;
@@ -116,7 +161,7 @@ nav > a:hover{
   display: flex;
   flex-direction: row;
   align-items: center;
-  color: white;
+  color: #333;
 
 }
 
@@ -139,7 +184,7 @@ nav > a:hover{
   justify-content: center;
   background-color: #eeb123;
   text-decoration: none;
-  color: white;
+  color: #333;
   font-size: 0.8rem;
   width: 8rem;
   height: 2rem;
@@ -169,7 +214,7 @@ nav > a:hover{
   justify-content: center;
   background-color: #12EA1A;
   text-decoration: none;
-  color: white;
+  color: #333;
   font-size: 0.8rem;
   width: 8rem;
   height: 2rem;

@@ -35,7 +35,7 @@ export default function Layout() {
     <div style={{ color: `${theme.secColor}` }}>
       <header  >
         <nav >
-          <NavLink to="/" style={linkStyles} end>Home</NavLink>
+          <NavLink to="/" style={linkStyles}>Home</NavLink>
           <NavLink to="stats" style={linkStyles}>Statistics</NavLink>
           <NavLink to="decks" style={linkStyles}>Decks</NavLink>
         </nav>

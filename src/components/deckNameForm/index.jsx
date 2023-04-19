@@ -9,10 +9,16 @@ export default function deckNameForm({setShowForm}) {
     }
     const handleCreateDeck = async (Name) => {
          const deck = { name: Name }
+         const headers = {
+            "authorization" : localStorage.getItem("token")
+         }
          let options = { method: "POST", headers: { 'Content-Type': 'application/json'
          ,"authorization" : localStorage.getItem("token")
         }, body: JSON.stringify(deck) } 
-         let deck_id = await (await fetch("http://localhost:3000/deck/new", options)).json()
+         let deck_id = await(await fetch("http://localhost:3000/deck/new", options)).json();
+         if (deck_id.ok){
+            
+         }
 
         setDecks(prev => [...prev, {...deck, deck_id}]) 
     }

@@ -8,25 +8,25 @@ export default function DecksPage() {
     const [decks, setDecks] = useState([])
     const [deckname,setdeckname] = useState("")
     const [showForm,setShowForm] = useState(false)
+
     const handleDeckNameForm = async ()=>{
         setShowForm(true)
     }
-
     useEffect(() => { // get decks 
         const getDecks = async () => {
-            let options = { method: "POST", headers: { 'Content-Type': 'application/json'}, body: JSON.stringify({user_id: user.user_id}) } 
-            let decks = await (await fetch("http://localhost:3000/deck", options)).json()
+            console.log("new token",localStorage.getItem("token"))
+            let options = { method:"GET", headers: { 'Content-Type': 'application/json', 'Authorization' : localStorage.getItem("token")}}
+            let decks = await (await fetch("http://localhost:3000/deck/", options)).json()
             setDecks(decks)
         }
 
         getDecks()
     }, [])
-
     return (
         <>
             <h1 style={{ textAlign: 'center' }}>All Decks</h1>
             <Table items={decks} onClick={handleDeckNameForm} />
-            {showForm ? <DeckNameForm setShowForm ={setShowForm} setdeckname = {setDecks}/> : null }
+            {showForm ? <DeckNameForm setShowForm ={setShowForm} /> : null }
         </>
     )
 }

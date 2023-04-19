@@ -5,7 +5,7 @@ export default function Card({ card_id, question, description, answer, show, onC
     const { theme } = useTheme();
     return (
         <div className={styles["card"]} >
-            <div className={styles["card-header"]} style={{color: theme.primText, backgroundColor: theme.secBG}}>
+            <div className={styles["card-header"]} style={{color: theme.primText, backgroundColor: theme.primBG}}>
                 <h2>{question}</h2>
             </div>
             <div className={show ? styles["card-body-active"] : styles["card-body"]} >

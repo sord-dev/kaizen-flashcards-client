@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
+import { useTheme } from '../../contexts';
 
 import { Card } from '../../components';
 
 export default function LearnPage() {
     const { deck_id } = useParams()
     const [deck, setDeck] = useState(null);
+    const { theme } = useTheme()
 
     const [step, setStep] = useState(0); // what question we're on
     const [show, setShow] = useState(false); // determine weather we show the component or not

@@ -33,7 +33,6 @@ export default function Layout() {
           <NavLink to="/" style={linkStyles} end>Home</NavLink>
           <NavLink to="stats" style={linkStyles}>Statistics</NavLink>
           <NavLink to="decks" style={linkStyles}>Decks</NavLink>
-          <NavLink to="calender" style={linkStyles}>Calender</NavLink>
         </nav>
         <a href="#" ><img className='profile-img' src="https://static.vecteezy.com/system/resources/previews/007/033/146/original/profile-icon-login-head-icon-vector.jpg" alt="profile image" /></a>
       </header>

@@ -28,6 +28,7 @@ export default function DeckPage() {
     return (
         <div style={{color: theme.primText}}>
         <h1>{deck.name}</h1>
+        <p>{deck.cards.length} cards</p>
         <p>Start learning or add a card to expand your deck</p>
             <div className='buttons-div'>
                 {/* <button>Add Card</button> */}
@@ -36,7 +37,7 @@ export default function DeckPage() {
             </div>
            
             <div>
-                <Modal open={openModal} close={() => setOpenModal(false)} title='Add new card' />
+                <Modal open={openModal} close={() => setOpenModal(false)} title='Add new card' buttonLabel='Add Card'/>
             </div>
         </div>
     )

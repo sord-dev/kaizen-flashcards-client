@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useTheme } from '../../contexts'
+import styles from './style.module.css'
 
 export default function Modal({open, close, title, addDeck, buttonLabel = 'Add Deck'}) {
     if(!open) return null
@@ -8,7 +9,7 @@ export default function Modal({open, close, title, addDeck, buttonLabel = 'Add D
     const {theme} = useTheme()
 
     return (
-        <div className='overlay'>
+        <div className={`${styles['styles']}`}>
         <div className="modalContainer" style={{backgroundColor: `${theme.primBG}`, color: `${theme.primText}`}}>
             <h2>{title}</h2>
             <input id='newDeckInput' value={deckName} onChange={(e) => setDeckName(e.target.value)}></input>

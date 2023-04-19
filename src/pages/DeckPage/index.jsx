@@ -3,6 +3,7 @@ import { useTheme } from '../../contexts'
 import { Modal } from '../../components'
 import { useNavigate, useParams } from 'react-router-dom'
 
+
 export default function DeckPage() {
     const navigate = useNavigate()
     const [deck, setCards] = useState({ cards: []})
@@ -26,11 +27,10 @@ export default function DeckPage() {
     }, [])
 
     return (
-        <div style={{color: theme.primText}}>
+        <div style={{color: theme.primText}} >
         <h1>{deck.name}</h1>
         <p>Start learning or add a card to expand your deck</p>
             <div className='buttons-div'>
-                {/* <button>Add Card</button> */}
                 <button className='btnTheme' onClick={addCard}>+ Add Card</button>
                 {deck?.cards.length ? <button className='btnTheme' onClick={() => navigate('learn')}>Start Learning</button> : null}
             </div>

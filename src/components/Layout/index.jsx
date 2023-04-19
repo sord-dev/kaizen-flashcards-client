@@ -11,23 +11,23 @@ export default function Layout() {
 
   const linkStyles = ({ isActive }) => ({
     // textDecoration: isActive ? 'underline #FAD97F' : 'none'
-    color: isActive ? `${theme.accentColor}` : `${theme.primText}`, padding: '0 10px 0 10px', border: isActive ? `1px solid ${theme.accentColor}` : "1px solid transparent", borderRadius: 10
+    color: isActive ? `${theme.accentColor}` : `${theme.primText}`, padding: '0 10px 0 10px', borderBottom: isActive ? `1px solid ${theme.accentColor}` : "1px solid transparent", fontSize: '1.5rem' 
   })
   
   function handleChange(e) {
     if (checked) {
-      setTheme({'primColor': '#ffffff', 'SecColor': '#151723', 'primText': '#333333', 'secText': '#8ed1fc', 'primBG': '#E6E6E6', 'secBG': "#363842", 'accentColor': '#FAD97F', 'darkMode': false})
+      setTheme({'primColor': '#ffffff', 'SecColor': '#151723', 'primText': '#333333', 'secText': '#8ed1fc', 'primBG': '#E6E6E6', 'secBG': "#363842", 'accentColor': '#5643CC', 'darkMode': false})
       setChecked(false)
     }
     else {
       
-      setTheme({'primColor': '#151723', 'SecColor': '#ffffff', 'primText': '#8ed1fc', 'secText': '#333333', 'primBG': '#363842', 'secBG': "#F2F2F2", 'accentColor': '#FAD97F', 'darkMode': true})
+      setTheme({'primColor': '#151723', 'SecColor': '#ffffff', 'primText': '#8ed1fc', 'secText': '#333333', 'primBG': '#363842', 'secBG': "#F2F2F2", 'accentColor': '#5643CC', 'darkMode': true})
       setChecked(true)
     }
   }
 
   return (
-    <div style={{ color: `${theme.secColor}` }}>
+    <div style={{ color: `${theme.secColor}`}}>
       <header  >
         <nav >
           <NavLink to="/" style={linkStyles} end>Home</NavLink>

@@ -18,6 +18,7 @@ export default function Layout() {
         </nav>
         <a href="#" ><img className='profile-img' src="https://static.vecteezy.com/system/resources/previews/007/033/146/original/profile-icon-login-head-icon-vector.jpg" alt="profile image" /></a>
       </header>
+      
       <main>
         <Outlet />
       </main>

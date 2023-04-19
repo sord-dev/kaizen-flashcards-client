@@ -4,8 +4,10 @@ import styles from './styles.module.css'
 import Switch from "react-switch"
 import { useState } from 'react'
 import { useTheme } from '../../contexts'
+import { Dropdown } from './dropdown'
 
 export default function Layout() {
+  const [dropdownActive, setdropdownActive] = useState(false)
   const { theme, setTheme } = useTheme()
   const [checked, setChecked] = useState(theme.darkMode)
 
@@ -34,7 +36,16 @@ export default function Layout() {
           <NavLink to="stats" style={linkStyles}>Statistics</NavLink>
           <NavLink to="decks" style={linkStyles}>Decks</NavLink>
         </nav>
-        <a href="#" ><i class="fa-regular fa-user"></i></a>
+        <div class="dropdown">
+          <button class="dropbtn" onclick={Dropdown}>
+          <i class="fa-regular fa-user"></i>
+         </button>
+          <div id="myDropdown" class="dropdown-content">
+            <a href="#">Link 1</a>
+            <a href="#">Link 2</a>
+            <a href="#">Link 3</a>
+          </div>
+        </div>
       </header>
       <div style={{ display: 'flex', justifyContent: 'end', marginTop: 30 }}>
         <label htmlFor="material-switch" style={{ display: 'flex', alignItems: 'center' }}>

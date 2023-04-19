@@ -16,7 +16,7 @@ export default function DecksPage() {
     }
     
     const handleCreateDeck = async (name) => {
-        const deck = { user_id: user.user_id, name }
+        const deck = name 
         let options = { method: "POST", headers: { 'Content-Type': 'application/json'}, body: JSON.stringify(deck) } 
         let deck_id = await (await fetch("http://localhost:3000/deck/new", options)).json()
 
@@ -26,7 +26,7 @@ export default function DecksPage() {
     }
     useEffect(() => { // get decks 
         const getDecks = async () => {
-            let options = { method: "POST", headers: { 'Content-Type': 'application/json'}, body: JSON.stringify({user_id: user.user_id}) } 
+            let options = { method: "GET", headers: { 'Content-Type': 'application/json', "authorization" : localStorage.getItem("token")} } 
             let decks = await (await fetch("http://localhost:3000/deck", options)).json()
             console.log(decks);
             setDecks(decks)

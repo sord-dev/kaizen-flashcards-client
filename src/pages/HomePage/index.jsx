@@ -1,9 +1,11 @@
 import React from 'react'
+import { useTheme } from '../../contexts'
 
 export default function HomePage() {
+    const { theme } = useTheme()
     return (
         <>
-            <div>
+            <div style={{ color: theme.primText }}>
                 <h1>おはよう, user</h1>
             </div>
             <div className='study-quota'>

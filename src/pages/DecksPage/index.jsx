@@ -15,7 +15,9 @@ export default function DecksPage() {
 
          setOpenModal(true)
     }
-
+    const remove=()=>{
+        console.log("hello")
+    }
     const handleCreateDeck = async (name) => {
         const deck = { user_id: user.user_id, name }
         let options = { method: "POST", headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(deck) }
@@ -60,7 +62,11 @@ export default function DecksPage() {
 
 function DeckCard({ deck }) {
     const { theme } = useTheme();
-
+    const remove = {
+        border : "none",
+        color : "red",
+        backgroundColor:"inherit"
+    }
     const goTo = useNavigate();
 
     let { name, user_id, deck_id } = deck;

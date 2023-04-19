@@ -25,7 +25,7 @@ Overall, Kaizen Flashcards can help Crammer Education meet their goal of growing
 ### Stakeholder Priority List
 
 #### Students:
-*The primary stakeholders are the students who will be using the product to improve their learning and revision. 
+* The primary stakeholders are the students who will be using the product to improve their learning and revision. 
 
 * The app's success will be measured by how well it helps students to learn and revise more effectively, so their feedback and needs are crucial in the development process.
 

@@ -22,6 +22,7 @@ export default function DecksPage() {
 
         console.log(deck_id);
         setDecks(prev => [...prev, {...deck, deck_id}]) 
+        setOpenModal(false)
     }
 
     useEffect(() => { // get decks 

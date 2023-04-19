@@ -10,16 +10,17 @@ export function Layout() {
   const [checked, setChecked] = useState(theme.darkMode)
   const linkStyles = ({ isActive }) => ({
     // textDecoration: isActive ? 'underline #FAD97F' : 'none'
-    color: isActive ? '#FAD97F' : `${theme.secColor}`, padding: '0 10px 0 10px', border: isActive ? '3px solid #FAD97F' : "3px solid transparent", borderRadius: 10
+    color: isActive ? `${theme.accentColor}` : `${theme.primText}`, padding: '0 10px 0 10px', border: isActive ? `1px solid ${theme.accentColor}` : "1px solid transparent", borderRadius: 10
   })
   
   function handleChange() {
     if (checked) {
-      setTheme({'primColor': '#ffffff', 'secColor': '#151723', 'darkMode': false})
+      setTheme({'primColor': '#ffffff', 'SecColor': '#151723', 'primText': '#333333', 'secText': '#6EC1E4', 'primBG': '#363842', 'secBG': "#F5F5F5", 'accentColor': '#FAD97F', 'darkMode': false})
       setChecked(false)
     }
     else {
-      setTheme({'primColor': '#151723', 'secColor': '#ffffff', 'darkMode': true})
+      
+      setTheme({'primColor': '#151723', 'SecColor': '#ffffff', 'primText': '#6EC1E4', 'secText': '#333333', 'primBG': '#F5F5F5', 'secBG': "#363842", 'accentColor': '#FAD97F', 'darkMode': true})
       setChecked(true)
     }
   }

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useTheme } from '../../contexts'
-import { Modal } from '../../components'
+import { Flashcard, Modal } from '../../components'
 import { useNavigate, useParams } from 'react-router-dom'
 
 export default function DeckPage() {
@@ -30,23 +30,17 @@ export default function DeckPage() {
             <h1>{deck.name}</h1>
             <p>{deck.cards.length} cards</p>
             <p>Start learning or add a card to expand your deck</p>
+            
             <div className='buttons-div'>
-                {/* <button>Add Card</button> */}
                 <button className='btnTheme' onClick={addCard}>+ Add Card</button>
                 {deck?.cards.length ? <button className='btnTheme' onClick={() => navigate('learn')}>Start Learning</button> : null}
             </div>
 
-            {deck ? <div className='card-list'>
-                {deck?.cards.map((card, index) => {
-                    const color = '#' + Math.floor(Math.random() * 16777215).toString(16)
-
-                    return (
-                        <div className='card' key={index} style={{ backgroundColor: `${theme.secBG}`, color: `${theme.primText}`, borderLeft: `20px solid ${color}` }}>
-                            <p className='card-content'>{card.question}</p>
-                        </div>
-                    )
-                })}
-            </div> : null}
+            {deck.cards.length ?
+                <div className='card-list'>
+                    {deck?.cards.map((card) => <Flashcard key={card.card_id} {...card} />)}
+                </div>
+                : <h3>Add some cards to study from above!</h3>}
 
             <div>
                 <Modal open={openModal} close={() => setOpenModal(false)} title='Add new card' buttonLabel='Add Card' />

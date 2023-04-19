@@ -13,7 +13,7 @@ export function Layout() {
     color: isActive ? `${theme.accentColor}` : `${theme.primText}`, padding: '0 10px 0 10px', border: isActive ? `1px solid ${theme.accentColor}` : "1px solid transparent", borderRadius: 10
   })
   
-  function handleChange() {
+  function handleChange(e) {
     if (checked) {
       setTheme({'primColor': '#ffffff', 'SecColor': '#151723', 'primText': '#333333', 'secText': '#8ed1fc', 'primBG': '#E6E6E6', 'secBG': "#363842", 'accentColor': '#FAD97F', 'darkMode': false})
       setChecked(false)
@@ -36,7 +36,7 @@ export function Layout() {
         </nav>
         <a href="#" ><img className='profile-img' src="https://static.vecteezy.com/system/resources/previews/007/033/146/original/profile-icon-login-head-icon-vector.jpg" alt="" /></a>
       </header>
-      <div style={{display: 'flex', justifyContent: 'end', marginTop: 30}}>
+      <div style={{display: 'flex', justifyContent: 'end', marginTop: 30, color:`${theme.primText}`}}>
             <label htmlFor="material-switch" style={{display: 'flex', alignItems: 'center' }}>
                 <span style={{marginRight: 10}}>Dark Mode </span>
                 <Switch 

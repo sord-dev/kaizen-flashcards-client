@@ -9,20 +9,17 @@ export default function DecksPage() {
 
     const [decks, setDecks] = useState([])
     const [openModal, setOpenModal] = useState()
-    const goTo = useNavigate()
+    
 
 
     const addDecks = (e) => {
         e.preventDefault()
         setOpenModal(true)
-        const newDeck = 'Desk'
-        setDecks([...decks, newDeck])
-        console.log(decks)
     }
     
 
-    const handleCreateDeck = async () => {
-        const deck = {user_id: user.user_id, name: "new deck"}
+    const handleCreateDeck = async (name) => {
+        const deck = {user_id: user.user_id, name }
         let options = { method: "POST", headers: { 'Content-Type': 'application/json'}, body: JSON.stringify(deck) } 
         let deck_id = await (await fetch("http://localhost:3000/deck/new", options)).json()
 
@@ -33,6 +30,7 @@ export default function DecksPage() {
         const getDecks = async () => {
             let options = { method: "POST", headers: { 'Content-Type': 'application/json'}, body: JSON.stringify({user_id: user.user_id}) } 
             let decks = await (await fetch("http://localhost:3000/deck", options)).json()
+            console.log(decks);
             setDecks(decks)
         }
 
@@ -45,24 +43,27 @@ export default function DecksPage() {
             <button className='btnTheme' onClick={addDecks}>+ Add Decks</button>
             
             <div className='deck-list'>
-                {decks.map(d => (<DeckCard handleClick={(e) => goTo(`/decks/${e.target.id}`)} key={d} deck={d} />))}
+                {decks.map(d => (<DeckCard key={d.deck_id} deck={d} />))}
             </div>
 
             <div>
-                <Modal open={openModal} close={() => setOpenModal(false)} title='Add new deck'></Modal>
+                <Modal open={openModal} close={() => setOpenModal(false)} title='Add new deck' addDeck={handleCreateDeck}></Modal>
             </div>
         </div>
     )
 }
 
-function DeckCard({ deck, handleClick }) {
-    const { theme } = useTheme()
-    let { deck_id, name, user_id } = deck;
+function DeckCard({ deck }) {
+    const { theme } = useTheme();
+
+    const goTo = useNavigate();
+
+    let { name, user_id, deck_id } = deck;
 
     return (
         <div className='deck-card'
             style={{ backgroundColor: `${theme.primBG}` }}
-            onClick={handleClick} id={deck_id}>
+            onClick={() => goTo(`/decks/${deck_id}`)}>
             <h2>{name}</h2>
         </div>
     )

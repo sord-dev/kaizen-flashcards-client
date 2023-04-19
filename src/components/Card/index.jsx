@@ -1,13 +1,15 @@
+import { useTheme } from '../../contexts'
 import styles from './styles.module.css'
 
 export default function Card({ card_id, question, description, answer, show, onCardSubmit }) {
+    const { theme } = useTheme();
     return (
         <div className={styles["card"]} >
-            <div className={styles["card-header"]}>
+            <div className={styles["card-header"]} style={{color: theme.primText, backgroundColor: theme.secBG}}>
                 <h2>{question}</h2>
             </div>
 
-            <div className={show ? styles["card-body-active"] : styles["card-body"]} >
+            <div className={show ? styles["card-body-active"] : styles["card-body"]}  style={{color: theme.primText}}>
                 <p>{answer}</p>
 
                 <p>{description}</p>

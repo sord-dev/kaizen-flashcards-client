@@ -17,6 +17,7 @@ function App() {
           <Route path='/stats' element={<Pages.StatsPage />} />
           <Route path='/decks' element={<Pages.DecksPage />} />
           <Route path='/decks/:deck_id' element={<Pages.DeckPage />} />
+          <Route path='/decks/:deck_id/learn' element={<Pages.LearnPage />} />
         </Route>
         <Route path={'/*'} element={<Navigate to={'/'} />} />
       </Routes>

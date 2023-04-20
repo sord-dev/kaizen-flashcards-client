@@ -4,11 +4,13 @@ import styles from './styles.module.css'
 import Switch from "react-switch"
 import { useState } from 'react'
 import { useTheme } from '../../contexts'
+import { useAuthContext } from '../../contexts/authContext'
 
 export default function Layout() {
   const [dropdownActive, setdropdownActive] = useState(false)
   const { theme, setTheme, themes } = useTheme()
   const [checked, setChecked] = useState(theme.darkMode)
+
 
   function handleChange() {
     if (checked) {
@@ -63,6 +65,7 @@ export default function Layout() {
 
 function NavBar({ dropdownActive, setdropdownActive }) {
   const { theme } = useTheme()
+  const { user, logout } = useAuthContext()
 
   const linkStyles = ({ isActive }) => ({
     // textDecoration: isActive ? 'underline #FAD97F' : 'none'
@@ -81,8 +84,20 @@ function NavBar({ dropdownActive, setdropdownActive }) {
           <i className="fa-regular fa-user"></i>
         </button>
         <div id="myDropdown" className={dropdownActive ? `${styles["dropdown-content"]} ${styles.active}` : `${styles["dropdown-content"]}`}>
-          <NavLink to="login">Login</NavLink>
-          <NavLink to="register">Register</NavLink>
+          {
+            user?.username ?
+              (
+                <NavLink to={'login'} onClick={logout}>Logout</NavLink>
+              )
+              :
+              (
+                <>
+                  <NavLink to="login">Login</NavLink>
+                  <NavLink to="register">Register</NavLink>
+                </>
+              )
+          }
+
         </div>
       </div>
     </header>

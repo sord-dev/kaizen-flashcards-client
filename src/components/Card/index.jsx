@@ -14,7 +14,7 @@ export default function Card({ step, onAnswerSubmit, cards, match, show = false 
             </div>
             <div className={styles["card-body"]} style={{ color: theme.primText, backgroundColor: theme.primBG }}>
                 <form onSubmit={e => onAnswerSubmit(e, { answer, card_id })}>
-                    <input type="text" placeholder="Type your answer here" name='userAnawer' autoComplete='false' autoCorrect='true'/>
+                    <input type="text" placeholder="Type your answer here" name='userAnawer' autoComplete='off'/>
 
                     <button hidden>Submit</button>
                 </form>

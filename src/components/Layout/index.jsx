@@ -22,7 +22,7 @@ export default function Layout() {
     }
     else {
       
-      setTheme({'primColor': '#151723', 'SecColor': '#ffffff', 'primText': '#8ed1fc', 'secText': '#333333', 'primBG': '#363842', 'secBG': "#F2F2F2", 'accentColor': '#5643CC', 'darkMode': true})
+      setTheme({'primColor': '#151723', 'SecColor': '#ffffff', 'primText': '#8ed1fc', 'secText': '#333333', 'primBG': '#363842', 'secBG': "#F2F2F2", 'accentColor': '#ff48fa', 'darkMode': true})
       setChecked(true)
     }
   }

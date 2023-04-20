@@ -51,3 +51,20 @@
     inset: 5px;
     border-radius: 15px;
   }  
+
+  .btn-remove {
+    border-radius: 6px;
+    border-style: none;
+    padding: 6px;
+    color: #fff;
+    background-color: #cf1111;
+    margin: 5px;
+}
+.btn-edit {
+    border-radius: 6px;
+    border-style: none;
+    padding: 6px;
+    color: #fff;
+    background-color: rgb(62, 193, 244);
+    margin: 5px;
+}

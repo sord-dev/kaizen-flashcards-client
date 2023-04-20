@@ -36,7 +36,7 @@
 .addCard :nth-child(7):hover {
 }
 /* DecksPage */
-.btnTheme {
+.btnTheme, .buttons-div button {
   margin: 5%;
   border-radius: 12px;
   font-size: 1rem;
@@ -51,7 +51,7 @@
   background-color: transparent;
 }
 
-.btnTheme:hover {
+.btnTheme:hover, .buttons-div button:hover {
   box-shadow: none;
   color: white;
 

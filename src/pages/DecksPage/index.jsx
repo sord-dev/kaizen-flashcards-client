@@ -46,9 +46,9 @@ export default function DecksPage() {
     
     return (
         <div>
-            <button className='btnTheme' onClick={addDecks}>+ Add Decks</button>
+            <button className='btnTheme' onClick={addDecks}>+ Add Deck</button>
 
-            <div className='deck-list'>
+            <div className={styles['deck-list']}>
                 {decks.length ? decks.map(d => (<DeckCard key={d.deck_id} deck={d} />)) : <h2 style={{ color: theme.primText }}>Click add deck to create a deck to learn from!</h2>}
             </div>
 
@@ -85,8 +85,12 @@ function DeckCard({ deck }) {
             onClick={() => goTo(`/decks/${deck_id}`)}
         >
             <h2>{name}</h2>
+            <div style={{display: 'flex', marginBottom: "5px"}}>
+                <p style={{color: theme.primText}}><i class="fa-solid fa-pen-to-square"></i></p>
+                <p style={{color: theme.primText}}><i class="fa-solid fa-trash"></i></p>
+            </div>
+            
 
-            <p style={remove}>remove</p>
         </div>
     )
 }

@@ -4,12 +4,12 @@ import styles from './style.module.css'
 
 export default function Flashcard({ question, answer,card_id }) {
     const { theme } = useTheme()
-    const remove = {
-        border : "none",
-        color : "red",
-        backgroundColor:"inherit",
-        cursor: 'pointer'
-    }
+    // const remove = {
+    //     border : "none",
+    //     color : "red",
+    //     backgroundColor:"inherit",
+    //     cursor: 'pointer'
+    // }
     const removeCard = async()=>{
         const options = {
             method : "DELETE"
@@ -29,7 +29,8 @@ export default function Flashcard({ question, answer,card_id }) {
             <div className='card-content'>
                 <h3>{question}</h3>
                 <p>{answer}</p>
-                <button style = {remove} onClick={removeCard}>Remove</button>
+                <button className={styles['remove']} style={{color: theme.primText}}onClick={removeCard}><i class="fa-solid fa-pen-to-square"></i></button>
+                <button className={styles['remove']} style={{color: theme.primText}}  ><i class="fa-solid fa-trash"></i></button>
             </div>
         </div>
 

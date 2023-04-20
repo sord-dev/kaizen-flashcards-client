@@ -1,13 +1,15 @@
 import { useTheme } from '../../contexts'
 import styles from './styles.module.css'
+import { useState } from 'react';
 
 export default function Card({ step, onAnswerSubmit, cards, match, show = false }) {
     let { card_id, question, description, answer } = cards[step]; // from all the cards, get the card in which the active step is at and destructure it
 
     const { theme } = useTheme();
+    const [border, setBorderColor] = useState()
 
     return (
-        <div className={styles["card"]} >
+        <div className={styles["card"]} style={{ color: theme.primText, backgroundColor: theme.primBG }}>
             <div className={styles["card-header"]} style={{ color: theme.primText, backgroundColor: theme.primBG }}>
                 <h2>{question}</h2>
                 <p>{step + 1}/{cards.length}</p>
@@ -27,8 +29,8 @@ export default function Card({ step, onAnswerSubmit, cards, match, show = false 
 
                 <div className={show ? styles["answer-card"] : styles["answer-card-innactive"]}>
                     <div className={match ? styles["green"] : styles["red"]}>
-                        <p>{answer}</p>
-                        <p>{description}</p>
+                        <h4>{answer}</h4>
+                        <h5>{description}</h5>
                     </div>
                 </div>
             </div>

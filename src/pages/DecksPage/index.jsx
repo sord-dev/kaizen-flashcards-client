@@ -3,7 +3,6 @@ import { useTheme } from '../../contexts'
 import { useNavigate } from 'react-router-dom'
 import { Modal } from '../../components'
 import { useAuthContext } from '../../contexts/authContext'
-import styles from './style.module.css'
 
 export default function DecksPage() {
     const { user } = useAuthContext()
@@ -43,12 +42,13 @@ export default function DecksPage() {
         }
         getDecks()
     }, [])
-    
+
+
     return (
         <div>
-            <button className='btnTheme' onClick={addDecks}>+ Add Deck</button>
+            <button className='btnTheme' onClick={addDecks}>+ Add Decks</button>
 
-            <div className={styles['deck-list']}>
+            <div className='deck-list'>
                 {decks.length ? decks.map(d => (<DeckCard key={d.deck_id} deck={d} />)) : <h2 style={{ color: theme.primText }}>Click add deck to create a deck to learn from!</h2>}
             </div>
 
@@ -85,12 +85,8 @@ function DeckCard({ deck }) {
             onClick={() => goTo(`/decks/${deck_id}`)}
         >
             <h2>{name}</h2>
-            <div style={{display: 'flex', marginBottom: "5px"}}>
-                <p style={{color: theme.primText}}><i class="fa-solid fa-pen-to-square"></i></p>
-                <p style={{color: theme.primText}}><i class="fa-solid fa-trash"></i></p>
-            </div>
-            
 
+            <p style={remove}>remove</p>
         </div>
     )
 }

@@ -85,8 +85,7 @@ function DeckCard({ deck }) {
             onClick={() => goTo(`/decks/${deck_id}`)}
         >
             <h2>{name}</h2>
-
-            <p style={remove}>remove</p>
+            <p style={remove}><i class="fa-solid fa-trash"></i></p>
         </div>
     )
 }

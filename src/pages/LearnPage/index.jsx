@@ -22,6 +22,7 @@ export default function LearnPage() {
             setDone(true)
             console.log(done)
         } else {
+            setShow(false)
             setStep(prev => prev + 1)
         }
     }

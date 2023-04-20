@@ -48,11 +48,12 @@ export default function DecksPage() {
 
     return (
         <div>
+            <button className='btnTheme' onClick={addDecks}>+ Add Decks</button>
+            
             <div className='deck-list'>
                 {decks.length ? decks.map(d => (<DeckCard key={d.deck_id} deck={d} />)) : <h2 style={{color: theme.primText}}>Click add deck to create a deck to learn from!</h2>}
             </div>
 
-            <button className='btnTheme' onClick={addDecks}>+ Add Decks</button>
             <div>
                 <Modal open={openModal}>
                     <h2>Add new deck</h2>

@@ -7,13 +7,14 @@ import styles from './style.module.css'
 
 export default function DecksPage() {
     const { user } = useAuthContext()
-
     const [decks, setDecks] = useState([])
     const [openModal, setOpenModal] = useState()
     const [deckName, setDeckName] = useState()
+    const { theme } = useTheme();
 
     const addDecks = (e) => {
         e.preventDefault()
+
         setOpenModal(true)
     }
 
@@ -26,15 +27,20 @@ export default function DecksPage() {
         setDecks(prev => [...prev, { ...deck, deck_id }])
         setOpenModal(false)
     }
-
     useEffect(() => { // get decks 
         const getDecks = async () => {
             let options = { method: "POST", headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ user_id: user.user_id }) }
-            let decks = await (await fetch("http://localhost:3000/deck", options)).json()
-            console.log(decks);
-            setDecks(decks)
-        }
+            let res = await fetch("http://localhost:3000/deck", options)
 
+            if (res.ok) {
+                let decks = await res.json()
+                console.log(decks);
+                setDecks(decks)
+            } else {
+                console.log(await res.text());
+            }
+
+        }
         getDecks()
     }, [])
     
@@ -43,7 +49,7 @@ export default function DecksPage() {
             <button className='btnTheme' onClick={addDecks}>+ Add Decks</button>
 
             <div className='deck-list'>
-                {decks.map(d => (<DeckCard key={d.deck_id} deck={d} />))}
+                {decks.length ? decks.map(d => (<DeckCard key={d.deck_id} deck={d} />)) : <h2 style={{ color: theme.primText }}>Click add deck to create a deck to learn from!</h2>}
             </div>
 
             <div>
@@ -59,19 +65,28 @@ export default function DecksPage() {
         </div>
     )
 }
+//<Modal open={openModal} close={() => setOpenModal(false)} title='Add new deck' addDeck={handleCreateDeck}></Modal>
 
 function DeckCard({ deck }) {
     const { theme } = useTheme();
-
+    const remove = {
+        border: "none",
+        color: "red",
+        cursor: 'pointer',
+        fontSize: '.9em'
+    }
     const goTo = useNavigate();
 
-    let { name, user_id, deck_id } = deck;
+    let { name, deck_id } = deck;
 
     return (
         <div className='deck-card'
-            style={{ backgroundColor: `${theme.primBG}` }}
-            onClick={() => goTo(`/decks/${deck_id}`)}>
+            style={{ backgroundColor: `${theme.primBG}`}}
+            onClick={() => goTo(`/decks/${deck_id}`)}
+        >
             <h2>{name}</h2>
+
+            <p style={remove}>remove</p>
         </div>
     )
 }

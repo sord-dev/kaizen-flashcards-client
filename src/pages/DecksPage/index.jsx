@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useTheme } from '../../contexts'
 import { useNavigate } from 'react-router-dom'
-import { Modal,NewCardForm } from '../../components'
+import { Modal } from '../../components'
 import { useAuthContext } from '../../contexts/authContext'
 
 export default function DecksPage() {
@@ -9,15 +9,14 @@ export default function DecksPage() {
     const [decks, setDecks] = useState([])
     const [openModal, setOpenModal] = useState()
     const [deckName, setDeckName] = useState()
+    const { theme } = useTheme();
 
     const addDecks = (e) => {
         e.preventDefault()
 
-         setOpenModal(true)
+        setOpenModal(true)
     }
-    const remove=()=>{
-        console.log("hello")
-    }
+
     const handleCreateDeck = async (name) => {
         const deck = { user_id: user.user_id, name }
         let options = { method: "POST", headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(deck) }
@@ -29,10 +28,17 @@ export default function DecksPage() {
     }
     useEffect(() => { // get decks 
         const getDecks = async () => {
-            let options = { method: "GET", headers: { 'Content-Type': 'application/json',"authorization" : localStorage.getItem("token")}  }
-            let decks = await (await fetch("http://localhost:3000/deck", options)).json()
-            console.log(decks);
-            setDecks(decks)
+            let options = { method: "POST", headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ user_id: user.user_id }) }
+            let res = await fetch("http://localhost:3000/deck", options)
+
+            if (res.ok) {
+                let decks = await res.json()
+                console.log(decks);
+                setDecks(decks)
+            } else {
+                console.log(await res.text());
+            }
+
         }
         getDecks()
     }, [])
@@ -43,7 +49,7 @@ export default function DecksPage() {
             <button className='btnTheme' onClick={addDecks}>+ Add Decks</button>
 
             <div className='deck-list'>
-                {decks.map(d => (<DeckCard key={d.deck_id} deck={d} />))}
+                {decks.length ? decks.map(d => (<DeckCard key={d.deck_id} deck={d} />)) : <h2 style={{ color: theme.primText }}>Click add deck to create a deck to learn from!</h2>}
             </div>
 
             <div>
@@ -64,19 +70,23 @@ export default function DecksPage() {
 function DeckCard({ deck }) {
     const { theme } = useTheme();
     const remove = {
-        border : "none",
-        color : "red",
-        backgroundColor:"inherit"
+        border: "none",
+        color: "red",
+        cursor: 'pointer',
+        fontSize: '.9em'
     }
     const goTo = useNavigate();
 
-    let { name, user_id, deck_id } = deck;
+    let { name, deck_id } = deck;
 
     return (
         <div className='deck-card'
-            style={{ backgroundColor: `${theme.primBG}` }}
-            onClick={() => goTo(`/decks/${deck_id}`)}>
+            style={{ backgroundColor: `${theme.primBG}`}}
+            onClick={() => goTo(`/decks/${deck_id}`)}
+        >
             <h2>{name}</h2>
+
+            <p style={remove}>remove</p>
         </div>
     )
 }

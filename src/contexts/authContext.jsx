@@ -14,7 +14,7 @@ export const AuthContextProvider = ({ children }) => {
         if (response.ok) {
             let user = await response.json();
             localStorage.setItem('user', JSON.stringify(user));
-            localStorage.setItem("token", user.Token)
+
             setUser(user);
             redirect('/');
         } else {
@@ -41,7 +41,7 @@ export const AuthContextProvider = ({ children }) => {
     const logout = async () => {
         let response = await fetch('http://localhost:3000/auth/logout');
         localStorage.removeItem('user');
-        localStorage.removeItem("token")
+
         redirect('/login');
     }
 
@@ -53,7 +53,7 @@ export const AuthContextProvider = ({ children }) => {
     }, [user])
 
     useEffect(() => {
-       console.log(user);
+        console.log(user);
     }, [user])
 
     return (

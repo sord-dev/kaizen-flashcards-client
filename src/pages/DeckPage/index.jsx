@@ -4,37 +4,36 @@ import { Flashcard, Modal } from '../../components'
 import { useNavigate, useParams } from 'react-router-dom'
 
 export default function DeckPage() {
-    const[showForm , setShowForm] = useState(false)
     const navigate = useNavigate()
     const [deck, setDeck] = useState({ cards: [] })
     const { deck_id } = useParams()
     const [openModal, setOpenModal] = useState(false)
-    const [newCardDetails, setNewCardDetails] = useState({ username: "", description: "", answer: "" })
+    const [newCardDetails, setNewCardDetails] = useState({ question: "", description: "", answer: "" })
     const { theme } = useTheme()
 
-    const  handleCreateCard = async() =>{
-        const {question,description,answer}= newCardDetails;
+    const handleCreateCard = async () => {
+        const { question, description, answer } = newCardDetails;
         const options = {
-            method : "POST",
+            method: "POST",
             headers: {
-                "Content-Type":"application/json"
+                "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                question : question,
-                description : description,
-                answer : answer
+                question: question,
+                description: description,
+                answer: answer
             })
         }
-        try{
-            const resp = await fetch(`http://localhost:3000/card/${deck_id}`,options)
-            if (resp.ok){
-               const data = await resp.json();
-               window.location.reload(true)
-               
+        try {
+            const resp = await fetch(`http://localhost:3000/card/${deck_id}`, options)
+            if (resp.ok) {
+                const data = await resp.json();
+                console.log(data);
+                setDeck(prev => ({ ...prev, cards: [...prev.cards, { ...data, question, description, answer }] }))
             }
         }
-        catch{
-            throw new Error ("Unable to get, status code: ",resp.status)
+        catch {
+            throw new Error("Unable to get, status code: ", resp.status)
         }
     }
 
@@ -72,11 +71,20 @@ export default function DeckPage() {
             <div>
                 <Modal open={openModal}>
                     <h2>Add new Card</h2>
-                    <input value={newCardDetails.username} onChange={(e) => setNewCardDetails(prev => ({ ...prev, username: e.target.value }))} />
-                    <input value={newCardDetails.description} onChange={(e) => setNewCardDetails(prev => ({ ...prev, description: e.target.value }))} />
-                    <input value={newCardDetails.answer} onChange={(e) => setNewCardDetails(prev => ({ ...prev, answer: e.target.value }))} />
+                    <div>
+                        <label>Question</label>
+                        <input value={newCardDetails.question} onChange={(e) => setNewCardDetails(prev => ({ ...prev, question: e.target.value }))} />
+                    </div>
+                    <div>
+                        <label>Description</label>
+                        <input value={newCardDetails.description} onChange={(e) => setNewCardDetails(prev => ({ ...prev, description: e.target.value }))} />
+                    </div>
+                    <div>
+                        <label>Answer</label>
+                        <input value={newCardDetails.answer} onChange={(e) => setNewCardDetails(prev => ({ ...prev, answer: e.target.value }))} />
+                    </div>
                     <div className='btnContainer'>
-                        <button className='btnTheme' type='submit' id='btnAddDeck' onClick={() => handleCreateCard(newCardDetails.username, newCardDetails.description, newCardDetails.answer)}>Create Card</button>
+                        <button className='btnTheme' type='submit' id='btnAddDeck' onClick={() => handleCreateCard(newCardDetails.question, newCardDetails.description, newCardDetails.answer)}>Create Card</button>
                         <button className='btnTheme' type='button' id='btnAddDeck' onClick={() => setOpenModal(false)}>Cancel</button>
                     </div>
                 </Modal>
@@ -84,7 +92,3 @@ export default function DeckPage() {
         </div>
     )
 }
-//<Modal open={openModal} close={() => setOpenModal(false)} title='Add new card' />
-
-
-// card list

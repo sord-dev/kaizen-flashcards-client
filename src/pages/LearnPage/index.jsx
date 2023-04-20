@@ -81,7 +81,7 @@ function LearnSummary({ result = [], cards = [] }) {
                 {result.map(answer => {
                     let card = cards.find(c => c.card_id === answer.card_id);
 
-                    return <SummaryQuestion match={answer.match} card={card} />
+                    return <SummaryQuestion key={answer.card_id} match={answer.match} card={card} />
                 })}
 
                 <div style={{ display: 'flex', justifyContent: 'center', gap: '2em' }}>

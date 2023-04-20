@@ -19,7 +19,7 @@ export default function Login() {
 
     return (
         <div>
-            <UserForm onSubmit={handleSubmit} error={error}>
+            <UserForm onSubmit={handleSubmit} error={error} buttonLabel='Register'>
                 <p>Already have an account? <Link to={'/login'}>Login</Link></p>
             </UserForm>
         </div>

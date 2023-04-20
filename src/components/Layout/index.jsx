@@ -27,7 +27,7 @@ export default function Layout() {
 
   return (
     <div style={{ color: `${theme.secColor}` }}>
-      <NavBar dropdownActive={dropdownActive} setdropdownActive={setdropdownActive}/>
+      <NavBar dropdownActive={dropdownActive} setdropdownActive={setdropdownActive} />
       <div style={{ display: 'flex', justifyContent: 'end', marginTop: 30 }}>
         <label htmlFor="material-switch" style={{ display: 'flex', alignItems: 'center' }}>
           <span style={{ marginRight: 10, color: theme.primText }}>Dark Mode </span>
@@ -61,7 +61,7 @@ export default function Layout() {
   )
 }
 
-function NavBar ({dropdownActive, setdropdownActive}){
+function NavBar({ dropdownActive, setdropdownActive }) {
   const { theme } = useTheme()
 
   const linkStyles = ({ isActive }) => ({
@@ -69,22 +69,22 @@ function NavBar ({dropdownActive, setdropdownActive}){
     color: isActive ? `${theme.accentColor}` : `${theme.primText}`, padding: '0 10px 0 10px', border: isActive ? `1px solid ${theme.accentColor}` : "1px solid transparent", borderRadius: 10
   })
 
-  return(
-  <header  >
-        <nav >
-          <NavLink to="/" style={linkStyles}>Home</NavLink>
-          <NavLink to="stats" style={linkStyles}>Statistics</NavLink>
-          <NavLink to="decks" style={linkStyles}>Decks</NavLink>
-        </nav>
-        <div>
-          <button className="dropbtn" onClick={() => setdropdownActive(prev => !prev)}>
-            <i className="fa-regular fa-user"></i>
-          </button>
-          <div id="myDropdown" className={dropdownActive ? `${styles["dropdown-content"]} ${styles.active}` : `${styles["dropdown-content"]}`}>
+  return (
+    <header  >
+      <nav >
+        <NavLink to="/" style={linkStyles}>Home</NavLink>
+        <NavLink to="stats" style={linkStyles}>Statistics</NavLink>
+        <NavLink to="decks" style={linkStyles}>Decks</NavLink>
+      </nav>
+      <div>
+        <button className={styles['dropbtn']} onClick={() => setdropdownActive(prev => !prev)}>
+          <i className="fa-regular fa-user"></i>
+        </button>
+        <div id="myDropdown" className={dropdownActive ? `${styles["dropdown-content"]} ${styles.active}` : `${styles["dropdown-content"]}`}>
           <NavLink to="login">Login</NavLink>
           <NavLink to="register">Register</NavLink>
-          </div>
         </div>
-      </header>
+      </div>
+    </header>
   )
 }

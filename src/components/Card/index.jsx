@@ -2,7 +2,7 @@ import { useTheme } from '../../contexts'
 import styles from './styles.module.css'
 
 export default function Card({ step, onAnswerSubmit, card, totalCards = 0, match, show = false, continueQuiz, showResult }) {
-    const { question, answer, card_id } = card;
+    const { question, answer, description, card_id } = card;
 
     const { theme } = useTheme();
 
@@ -18,8 +18,7 @@ export default function Card({ step, onAnswerSubmit, card, totalCards = 0, match
 
                     <button hidden>Submit</button>
                 </form>
-
-                {show ? <AnswerDetails showResult={showResult} continueQuiz={continueQuiz} step={step} totalCards={totalCards} match={match} {...card} /> : null}
+                {show ?  <AnswerDetails showResult={showResult} continueQuiz={continueQuiz} step={step} totalCards={totalCards} match={match} {...card} /> : null}
             </div>
         </div>
     )
@@ -33,18 +32,14 @@ function AnswerDetails({ answer, description, match, totalCards, step, continueQ
                 <p>{description}</p>
 
                 {
-                    !step + 1 == totalCards
+                    step + 1 !== totalCards
                         ?
                         <button className='btnTheme' onClick={() => continueQuiz(step)}>Next Question</button>
                         :
-                        <button className='btnTheme' onClick={() => showResult()}>Show Results</button>
+                        <button className='btnTheme' onClick={showResult}>Show Results</button>
                 }
 
             </div>
         </div>
     )
-}
-
-function GameSummary() {
-
 }

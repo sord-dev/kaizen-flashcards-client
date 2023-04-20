@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom';
-import { Card,ShowResults } from '../../components';
+import { Link, useParams } from 'react-router-dom';
+import { Card } from '../../components';
 
 import compare from 'js-levenshtein'
-
+import { useTheme } from '../../contexts';
 export default function LearnPage() {
     const { deck_id } = useParams();
     const [deck, setDeck] = useState(null);
@@ -18,10 +18,11 @@ export default function LearnPage() {
     const [result, setResult] = useState([])
 
     const continueQuiz = (step) => {
-        if(step + 1 >= deck?.cards.length) {
+        if (step + 1 >= deck?.cards.length) {
+            setDone(true)
             console.log(done)
         } else {
-            
+
             setShow(false)
             setStep(prev => prev + 1)
         }
@@ -29,6 +30,7 @@ export default function LearnPage() {
 
     const showResult = () => {
         console.log(result)
+
         setDone(true)
     }
 
@@ -42,6 +44,7 @@ export default function LearnPage() {
             setMatch(hit.match)
             setResult(prev => [...prev, hit])            
         }
+        e.target.reset()
     }
 
     useEffect(() => { // get the deck data
@@ -57,7 +60,56 @@ export default function LearnPage() {
         <>
             {deck ? <Card continueQuiz={continueQuiz} showResult={showResult} step={step} card={activeCard} onAnswerSubmit={onAnswerSubmit} match={match} show={show} done={done} totalCards={deck.cards.length}/> : null}
             {done ? <ShowResults result={result}/> : null}
+
+            {deck && !done ? <Card continueQuiz={continueQuiz} showResult={showResult} step={step} card={activeCard} onAnswerSubmit={onAnswerSubmit} match={match} show={show} done={done} totalCards={deck.cards.length} /> : <LearnSummary result={result} cards={deck?.cards} />}
+
         </>
     )
 }
 
+function LearnSummary({ result = [], cards = [] }) {
+    const { theme } = useTheme();
+
+    const correct = result.filter(a => a.match == true).length;
+    const wrong = result.filter(a => a.match == false).length;
+
+    const percent = 100 / cards.length;
+    const accuracy = percent * correct;
+
+    return (
+        <>
+            <div style={{ color: theme.primText }}>
+                {result.map(answer => {
+                    let card = cards.find(c => c.card_id === answer.card_id);
+
+                    return <SummaryQuestion key={answer.card_id} match={answer.match} card={card} />
+                })}
+
+                <div style={{ display: 'flex', justifyContent: 'center', gap: '2em' }}>
+                    <div>
+                        <h3>Correct</h3>
+                        <p>{correct}</p>
+                    </div>
+
+                    <div>
+                        <h3>Incorrect</h3>
+                        <p>{wrong}</p>
+                    </div>
+
+                    <div>
+                        <h3>Accuracy</h3>
+                        <p>{accuracy}%</p>
+                    </div>
+                </div>
+            </div>
+
+            <Link to={'/decks'}><button className='btnTheme'>Back to Decks</button></Link>
+        </>
+    )
+}
+
+function SummaryQuestion({ match, card }) {
+    return (
+        <p> {card.question} | {card.answer} | {match ? 'correct' : 'incorrect'}</p>
+    )
+}

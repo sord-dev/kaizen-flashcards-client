@@ -39,7 +39,20 @@ nav > a:hover{
   font-size: 2rem;
 }
 
+.fa-solid{
+  color: #eafbff;
+  font-size: 1.5rem;
+  opacity: .7;
+  transition: 300ms;
+}
 
+.fa-solid:hover {
+  color: #1bd5ff;
+}
+
+.fa-solid.fa-trash:hover {
+  color: rgba(255, 0, 0, 0.656);
+}
 
 .profile-img {
   height: 50px;
@@ -49,6 +62,7 @@ nav > a:hover{
 
 .study-quota{
   background-color: #363842;
+  font-size: 1.2rem;
   border-left: #11C3EA 4px solid;
   display: flex;
   flex-direction: row;
@@ -65,7 +79,8 @@ nav > a:hover{
   background-color: #11C3EA;
   text-decoration: none;
   color:#333;
-  font-size: 0.8rem;
+  font-size: 1rem;
+  font-weight: 600;
   width: 8rem;
   height: 2rem;
   border-radius: 0.5rem;
@@ -77,6 +92,7 @@ nav > a:hover{
 
 .quota-title{
   font-size: 1.2rem;
+  font-weight: 700;
   color: #11C3EA;
 }
 
@@ -135,6 +151,7 @@ nav > a:hover{
   border-left: #eeb123 4px solid;
   background-color: #363842;
   display: flex;
+  font-size: 1.2rem;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
@@ -151,7 +168,8 @@ nav > a:hover{
   text-decoration: none;
   color: #333;
   font-size: 0.8rem;
-  width: 8rem;
+  font-weight: 600;
+  width: 9rem;
   height: 2rem;
   border-radius: 0.5rem;
   border: none;
@@ -165,6 +183,7 @@ nav > a:hover{
   background-color: #363842;
   display: flex;
   flex-direction: row;
+  font-size: 1.2rem;
   align-items: center;
   justify-content: space-between;
   margin-top: 2rem;
@@ -181,8 +200,9 @@ nav > a:hover{
   text-decoration: none;
   color: #333;
   font-size: 0.8rem;
-  width: 8rem;
+  width: 5rem;
   height: 2rem;
+  font-weight: 600;
   border-radius: 0.5rem;
   border: none;
   margin: 5px;

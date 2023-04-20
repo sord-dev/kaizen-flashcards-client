@@ -34,8 +34,8 @@ export default function DeckPage() {
                 newCardDetails({ question: "", description: "", answer: "" })
             }
         }
-        catch {
-            throw new Error("Unable to get, status code: ", resp.status)
+        catch (error) {
+            console.log(error);
         }
     }
 

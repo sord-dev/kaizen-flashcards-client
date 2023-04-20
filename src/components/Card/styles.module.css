@@ -52,14 +52,17 @@
   cursor: pointer;
 }
 
-.answer-card .green,
-.answer-card-innactive .green {
+.answer-card .green h4,
+.answer-card-innactive .green{
   color: rgb(35, 201, 35);
+  font-size: larger;
+
 }
 
-.answer-card .red,
+.answer-card .red h4,
 .answer-card-innactive .red {
-  color: rgb(224, 188, 60);
+  color: rgb(224, 60, 60);
+  font-size: larger;
 }
 
 .answer-card-innactive {

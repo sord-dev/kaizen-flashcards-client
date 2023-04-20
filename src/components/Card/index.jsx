@@ -7,7 +7,7 @@ export default function Card({ step, onAnswerSubmit, card, totalCards = 0, match
     const { theme } = useTheme();
 
     return (
-        <div className={styles["card"]} >
+        <div className={styles["card"]} style={{ color: theme.primText, backgroundColor: theme.primBG }}>
             <div className={styles["card-header"]} style={{ color: theme.primText, backgroundColor: theme.primBG }}>
                 <h2>{question}</h2>
                 <p>{step + 1}/{totalCards}</p>
@@ -29,9 +29,8 @@ function AnswerDetails({ answer, description, match, totalCards, step, continueQ
     return (
         <div className={styles["answer-card"]}>
             <div className={match ? styles["green"] : styles["red"]}>
-                <p>{answer}</p>
-                <p>{description}</p>
-
+                <h4>{answer}</h4>
+                <h5>{description}</h5>
                 {
                     !step + 1 == totalCards
                         ?

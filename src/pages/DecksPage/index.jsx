@@ -3,6 +3,7 @@ import { useTheme } from '../../contexts'
 import { useNavigate } from 'react-router-dom'
 import { Modal } from '../../components'
 import { useAuthContext } from '../../contexts/authContext'
+import  styles from './style.module.css'
 
 export default function DecksPage() {
     const { user } = useAuthContext()
@@ -64,8 +65,8 @@ export default function DecksPage() {
         <div>
             <button className='btnTheme' onClick={addDecks}>+ Add Decks</button>
 
-            <div className='deck-list'>
-                {decks.length ? decks.map(d => (<DeckCard key={d.deck_id} removeDeck={removeDeck} deck={d} />)) : <h2 style={{ color: theme.primText }}>Click add deck to create a deck to learn from!</h2>}
+            <div className={styles['deck-list']}>
+                {decks.length ? decks.map(d => (<DeckCard key={d.deck_id} deck={d} />)) : <h2 style={{ color: theme.primText }}>Click add deck to create a deck to learn from!</h2>}
             </div>
 
             <div>
@@ -103,13 +104,15 @@ function DeckCard({ deck, removeDeck }) {
     let { name, deck_id } = deck;
 
     return (
-        <div className='deck-card'
-            style={{ backgroundColor: `${theme.primBG}` }}
-        >
+        <div className='deck-card' style={{ backgroundColor: `${theme.primBG}` }}>
             <h2>{name}</h2>
             <div style={{ display: 'flex', gap: '1em', margin: '6px 12px' }}>
-                <p style={learn} onClick={() => goTo(`/decks/${deck_id}`)}><i class="fa-solid fa-book"></i></p>
-                <p style={remove} onClick={() => removeDeck(deck_id)}><i class="fa-solid fa-trash"></i></p>
+                <p style={{learn ,color: theme.secText}} onClick={() => goTo(`/decks/${deck_id}`)}><i class="fa-solid fa-book"></i></p>
+                {/* <p style={remove} onClick={() => removeDeck(deck_id)}><i class="fa-solid fa-trash"></i></p> */}
+                <div style={{display: 'flex', marginBottom: "5px"}}>
+                    <p style={{color: theme.setText}}><i class="fa-solid fa-pen-to-square"></i></p>
+                    <p style={{color: theme.secText}} onClick={() => removeDeck(deck_id)}><i class="fa-solid fa-trash"></i></p>
+                </div>
             </div>
         </div>
     )

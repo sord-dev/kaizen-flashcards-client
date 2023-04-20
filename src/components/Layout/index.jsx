@@ -7,22 +7,16 @@ import { useTheme } from '../../contexts'
 
 export default function Layout() {
   const [dropdownActive, setdropdownActive] = useState(false)
-  const { theme, setTheme } = useTheme()
+  const { theme, setTheme, themes } = useTheme()
   const [checked, setChecked] = useState(theme.darkMode)
 
-  const linkStyles = ({ isActive }) => ({
-    // textDecoration: isActive ? 'underline #FAD97F' : 'none'
-    color: isActive ? `${theme.accentColor}` : `${theme.primText}`, padding: '0 10px 0 10px', border: isActive ? `1px solid ${theme.accentColor}` : "1px solid transparent", borderRadius: 10
-  })
-
-  function handleChange(e) {
+  function handleChange() {
     if (checked) {
-      setTheme({ 'primColor': '#ffffff', 'SecColor': '#151723', 'primText': '#333333', 'secText': '#8ed1fc', 'primBG': '#E6E6E6', 'secBG': "#363842", 'accentColor': '#FAD97F', 'darkMode': false })
+      setTheme(themes.light)
       setChecked(false)
     }
     else {
-
-      setTheme({ 'primColor': '#151723', 'SecColor': '#ffffff', 'primText': '#8ed1fc', 'secText': '#333333', 'primBG': '#363842', 'secBG': "#F2F2F2", 'accentColor': '#FAD97F', 'darkMode': true })
+      setTheme(themes.dark)
       setChecked(true)
     }
   }
@@ -33,23 +27,7 @@ export default function Layout() {
 
   return (
     <div style={{ color: `${theme.secColor}` }}>
-      <header  >
-        <nav >
-          <NavLink to="/" style={linkStyles}>Home</NavLink>
-          <NavLink to="stats" style={linkStyles}>Statistics</NavLink>
-          <NavLink to="decks" style={linkStyles}>Decks</NavLink>
-        </nav>
-        <div className={dropdownActive ? "dropdown active" : "dropdown"}>
-          <button class="dropbtn" onClick={() => setdropdownActive(prev => !prev)}>
-            <i className="fa-regular fa-user"></i>
-          </button>
-          <div id="myDropdown" class="dropdown-content">
-            <a href="#">Link 1</a>
-            <a href="#">Link 2</a>
-            <a href="#">Link 3</a>
-          </div>
-        </div>
-      </header>
+      <NavBar dropdownActive={dropdownActive} setdropdownActive={setdropdownActive} />
       <div style={{ display: 'flex', justifyContent: 'end', marginTop: 30 }}>
         <label htmlFor="material-switch" style={{ display: 'flex', alignItems: 'center' }}>
           <span style={{ marginRight: 10, color: theme.primText }}>Dark Mode </span>
@@ -80,5 +58,33 @@ export default function Layout() {
         <p>kaizen</p>
       </footer>
     </div>
+  )
+}
+
+function NavBar({ dropdownActive, setdropdownActive }) {
+  const { theme } = useTheme()
+
+  const linkStyles = ({ isActive }) => ({
+    // textDecoration: isActive ? 'underline #FAD97F' : 'none'
+    color: isActive ? `${theme.accentColor}` : `${theme.primText}`, padding: '0 10px 0 10px', border: isActive ? `1px solid ${theme.accentColor}` : "1px solid transparent", borderRadius: 10
+  })
+
+  return (
+    <header  >
+      <nav >
+        <NavLink to="/" style={linkStyles}>Home</NavLink>
+        <NavLink to="stats" style={linkStyles}>Statistics</NavLink>
+        <NavLink to="decks" style={linkStyles}>Decks</NavLink>
+      </nav>
+      <div>
+        <button className={styles['dropbtn']} onClick={() => setdropdownActive(prev => !prev)}>
+          <i className="fa-regular fa-user"></i>
+        </button>
+        <div id="myDropdown" className={dropdownActive ? `${styles["dropdown-content"]} ${styles.active}` : `${styles["dropdown-content"]}`}>
+          <NavLink to="login">Login</NavLink>
+          <NavLink to="register">Register</NavLink>
+        </div>
+      </div>
+    </header>
   )
 }

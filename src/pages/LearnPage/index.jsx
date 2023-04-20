@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
-
 import { Card } from '../../components';
+
+import compare from 'js-levenshtein'
 
 export default function LearnPage() {
     const { deck_id } = useParams();
@@ -14,15 +15,14 @@ export default function LearnPage() {
 
     const onAnswerSubmit = (e, { answer, card_id }) => {
         e.preventDefault()
-        const userAnswer = new FormData(e.target).get('userAnawer')
-
-        if (userAnswer) {
-            console.log({ card_id, match: userAnswer.toLowerCase() === answer.toLowerCase() });
-            setMatch(userAnswer.toLowerCase() === answer.toLowerCase());
-        } else {
-            setMatch(false);
-        }
         setShow(true)
+        const userAnswer = new FormData(e.target).get('userAnawer')
+        if (userAnswer) {
+            let hit = { card_id, match: compare(userAnswer.toLowerCase(), answer.toLowerCase()) }
+            hit.match <= 2 ? setMatch(true) : setMatch(false);
+            console.log(hit);
+        }
+        
     }
 
     useEffect(() => { // get the deck data
@@ -34,7 +34,6 @@ export default function LearnPage() {
 
         getDeck()
     }, [])
-
 
     return (
         <>

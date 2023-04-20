@@ -1,10 +1,8 @@
-import { useState } from 'react';
 import { useTheme } from '../../contexts'
 import styles from './styles.module.css'
 
 export default function Card({ step, onAnswerSubmit, cards, match, show = false }) {
-
-    let { card_id, question, description, answer } = cards[step];
+    let { card_id, question, description, answer } = cards[step]; // from all the cards, get the card in which the active step is at and destructure it
 
     const { theme } = useTheme();
 

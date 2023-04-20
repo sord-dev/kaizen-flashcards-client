@@ -10,19 +10,32 @@ export default function LearnPage() {
 
     const [show, setShow] = useState(false);
     const [match, setMatch] = useState(false);
+    const [done, setDone] = useState(false); // quiz complete?
 
     const [step, setStep] = useState(0); // what question we're on
 
+
+    let activeCard = deck?.cards[step]
+
+    const continueQuiz = (step) => {
+        if(step + 1 >= deck?.cards.length) {
+            setDone(true)
+            console.log(done)
+        } else {
+            setStep(prev => prev + 1)
+        }
+    }
+
     const onAnswerSubmit = (e, { answer, card_id }) => {
         e.preventDefault()
-        setShow(true)
         const userAnswer = new FormData(e.target).get('userAnawer')
         if (userAnswer) {
-            let hit = { card_id, match: compare(userAnswer.toLowerCase(), answer.toLowerCase()) }
+            setShow(true)
+            let hit = { card_id, match: compare(userAnswer.toLowerCase(), answer.toLowerCase()) } // for server
             hit.match <= 2 ? setMatch(true) : setMatch(false);
             console.log(hit);
+            
         }
-        
     }
 
     useEffect(() => { // get the deck data
@@ -37,7 +50,7 @@ export default function LearnPage() {
 
     return (
         <>
-            {deck ? <Card step={step} cards={deck.cards} onAnswerSubmit={onAnswerSubmit} match={match} show={show} /> : null}
+            {deck ? <Card continueQuiz={continueQuiz} step={step} card={activeCard} onAnswerSubmit={onAnswerSubmit} match={match} show={show} done={done} totalCards={deck.cards.length}/> : null}
         </>
     )
 }

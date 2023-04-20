@@ -39,7 +39,8 @@
 }
 
 /* DecksPage */
-.btnTheme, .buttons-div button {
+.btnTheme,
+.buttons-div button {
   margin: 2%;
   border-radius: 12px;
   font-size: 1.5rem;
@@ -47,14 +48,19 @@
   color: #333;
   box-shadow: 0 0 6px 0 rgba(157, 96, 212, 0.5);
   border: solid 3px transparent;
-  background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient(101deg, #78E4FF, #FF48FA);
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0),
+      rgba(255, 255, 255, 0)
+    ),
+    linear-gradient(101deg, #78e4ff, #ff48fa);
   background-origin: border-box;
   background-clip: content-box, border-box;
   box-shadow: 2px 1000px 1px #fff inset;
   background-color: transparent;
 }
 
-.btnTheme:hover, .buttons-div button:hover {
+.btnTheme:hover,
+.buttons-div button:hover {
   box-shadow: none;
   color: white;
 }
@@ -76,7 +82,7 @@
     "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
     sans-serif;
   font-size: 16px;
-  height: 8.5rem;
+
   font-weight: 500;
   padding: 0 1.6rem;
   text-align: center;
@@ -87,24 +93,29 @@
   touch-action: manipulation;
 }
 
-
-
 .btnTheme:hover {
   box-shadow: rgba(80, 63, 205, 0.5) 0 1px 30px;
   transition-duration: 0.1s;
 }
 
-@media (min-width: 768px) {
+@media (max-width: 768px) {
   .buttons-div button {
     padding: 0 2.6rem;
   }
 }
 
 .deck-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
   gap: 1em;
+  grid-template-columns: 1fr 1fr;
+}
+
+@media (max-width: 768px) {
+  .deck-list {
+    display: flex;
+    gap: 1em;
+    flex-wrap: wrap;
+  }
 }
 
 .deck-card {
@@ -128,7 +139,7 @@
   color: white;
 }
 
-.deck-card::before {
+/* .deck-card::before {
   content: "";
   position: absolute;
   width: 20vw;
@@ -158,7 +169,7 @@
   background: #363842;
   inset: 5px;
   border-radius: 15px;
-}
+} */
 
 /* DeckPage */
 .card-list {

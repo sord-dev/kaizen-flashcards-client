@@ -103,11 +103,11 @@ function DeckCard({ deck, removeDeck }) {
     let { name, deck_id } = deck;
 
     return (
-        <div className='deck-card'
-            style={{ backgroundColor: `${theme.primBG}` }}
+        <div className='cardTheme'
+            style={{ backgroundColor: `${theme.primBG}`, minWidth: '320px' }}
         >
             <h2>{name}</h2>
-            <div style={{ display: 'flex', gap: '1em', margin: '6px 12px' }}>
+            <div style={{ display: 'flex', gap: '1em', justifyContent: 'center' }}>
                 <p style={learn} onClick={() => goTo(`/decks/${deck_id}`)}><i class="fa-solid fa-book"></i></p>
                 <p style={remove} onClick={() => removeDeck(deck_id)}><i class="fa-solid fa-trash"></i></p>
             </div>

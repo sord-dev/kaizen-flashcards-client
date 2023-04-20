@@ -40,9 +40,18 @@ nav > a:hover{
 }
 
 .fa-solid{
-  color: #11C3EA;
+  color: #eafbff;
   font-size: 1.5rem;
   opacity: .7;
+  transition: 300ms;
+}
+
+.fa-solid:hover {
+  color: #1bd5ff;
+}
+
+.fa-solid.fa-trash:hover {
+  color: rgba(255, 0, 0, 0.656);
 }
 
 .profile-img {

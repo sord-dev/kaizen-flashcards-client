@@ -15,27 +15,34 @@ export default function LearnPage() {
     const [step, setStep] = useState(0); // what question we're on
 
 
-    let activeCard = deck?.cards[step]
+    let activeCard = deck?.cards[step];
+
+    const [result, setResult] = useState([])
 
     const continueQuiz = (step) => {
         if(step + 1 >= deck?.cards.length) {
             setDone(true)
             console.log(done)
         } else {
+            
             setShow(false)
             setStep(prev => prev + 1)
         }
+    }
+
+    const showResult = () => {
+        console.log(result);
     }
 
     const onAnswerSubmit = (e, { answer, card_id }) => {
         e.preventDefault()
         const userAnswer = new FormData(e.target).get('userAnawer')
         if (userAnswer) {
-            setShow(true)
-            let hit = { card_id, match: compare(userAnswer.toLowerCase(), answer.toLowerCase()) } // for server
-            hit.match <= 2 ? setMatch(true) : setMatch(false);
-            console.log(hit);
+            let hit = { card_id, match: compare(userAnswer.toLowerCase(), answer.toLowerCase()) <= 2 ? true : false } // for server
             
+            setShow(true)
+            setMatch(hit.match)
+            setResult(prev => [...prev, hit])            
         }
     }
 
@@ -51,7 +58,7 @@ export default function LearnPage() {
 
     return (
         <>
-            {deck ? <Card continueQuiz={continueQuiz} step={step} card={activeCard} onAnswerSubmit={onAnswerSubmit} match={match} show={show} done={done} totalCards={deck.cards.length}/> : null}
+            {deck ? <Card continueQuiz={continueQuiz} showResult={showResult} step={step} card={activeCard} onAnswerSubmit={onAnswerSubmit} match={match} show={show} done={done} totalCards={deck.cards.length}/> : null}
         </>
     )
 }

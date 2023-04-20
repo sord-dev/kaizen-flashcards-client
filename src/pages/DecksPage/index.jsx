@@ -108,8 +108,8 @@ function DeckCard({ deck, removeDeck }) {
         >
             <h2>{name}</h2>
             <div style={{ display: 'flex', gap: '1em', margin: '6px 12px' }}>
-                <p style={learn} onClick={() => goTo(`/decks/${deck_id}`)}>learn</p>
-                <p style={remove} onClick={() => removeDeck(deck_id)}>remove</p>
+                <p style={learn} onClick={() => goTo(`/decks/${deck_id}`)}><i class="fa-solid fa-book-blank"></i></p>
+                <p style={remove} onClick={() => removeDeck(deck_id)}><i class="fa-solid fa-trash"></i></p>
             </div>
         </div>
     )

@@ -7,7 +7,6 @@ export default function StatsPage() {
 
     return (
         <>
-            <h2>Stats</h2>
             <UserStatisticsDisplay />
         </>
     )

@@ -54,6 +54,8 @@ Overall, Kaizen Flashcards can help Crammer Education meet their goal of growing
 
 ### Landing Page
 
+The landing page is the first page that users will see when they visit the site. It provides a brief overview of the app and its features, and includes a call to action to encourage users to sign up.
+
 ### Registration Page
 
 ### Decks Page

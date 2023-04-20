@@ -16,9 +16,7 @@ export default function DecksPage() {
 
         setOpenModal(true)
     }
-    const remove = () => {
-        console.log("hello")
-    }
+
     const handleCreateDeck = async (name) => {
         const deck = { user_id: user.user_id, name }
         let options = { method: "POST", headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(deck) }
@@ -49,9 +47,9 @@ export default function DecksPage() {
     return (
         <div>
             <button className='btnTheme' onClick={addDecks}>+ Add Decks</button>
-            
+
             <div className='deck-list'>
-                {decks.length ? decks.map(d => (<DeckCard key={d.deck_id} deck={d} />)) : <h2 style={{color: theme.primText}}>Click add deck to create a deck to learn from!</h2>}
+                {decks.length ? decks.map(d => (<DeckCard key={d.deck_id} deck={d} />)) : <h2 style={{ color: theme.primText }}>Click add deck to create a deck to learn from!</h2>}
             </div>
 
             <div>
@@ -74,7 +72,8 @@ function DeckCard({ deck }) {
     const remove = {
         border: "none",
         color: "red",
-        backgroundColor: "inherit"
+        cursor: 'pointer',
+        fontSize: '.9em'
     }
     const goTo = useNavigate();
 
@@ -82,9 +81,12 @@ function DeckCard({ deck }) {
 
     return (
         <div className='deck-card'
-            style={{ backgroundColor: `${theme.primBG}` }}
-            onClick={() => goTo(`/decks/${deck_id}`)}>
+            style={{ backgroundColor: `${theme.primBG}`}}
+            onClick={() => goTo(`/decks/${deck_id}`)}
+        >
             <h2>{name}</h2>
+
+            <p style={remove}>remove</p>
         </div>
     )
 }

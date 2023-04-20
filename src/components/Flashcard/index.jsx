@@ -6,7 +6,8 @@ export default function Flashcard({ question, answer,card_id }) {
     const remove = {
         border : "none",
         color : "red",
-        backgroundColor:"inherit"
+        backgroundColor:"inherit",
+        cursor: 'pointer'
     }
     const removeCard = async()=>{
         const options = {

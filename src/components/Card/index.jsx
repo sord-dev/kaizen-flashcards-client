@@ -33,7 +33,7 @@ function AnswerDetails({ answer, description, match, totalCards, step, continueQ
                 <p>{description}</p>
 
                 {
-                    !step + 1 == totalCards
+                    step + 1 !== totalCards
                         ?
                         <button className='btnTheme' onClick={() => continueQuiz(step)}>Next Question</button>
                         :
@@ -43,8 +43,4 @@ function AnswerDetails({ answer, description, match, totalCards, step, continueQ
             </div>
         </div>
     )
-}
-
-function GameSummary() {
-
 }

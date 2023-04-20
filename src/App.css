@@ -42,7 +42,8 @@
 .btnTheme,
 .buttons-div button {
   margin: 2%;
-  border-radius: 12px;
+  padding: 4px 6px;
+  border-radius: 4px;
   font-size: 1.5rem;
   width: 10rem;
   color: #333;
@@ -98,6 +99,10 @@
   transition-duration: 0.1s;
 }
 
+.cardTheme h3 {
+  font-size: 1.4em;
+}
+
 @media (max-width: 768px) {
   .buttons-div button {
     padding: 0 2.6rem;
@@ -115,6 +120,7 @@
     display: flex;
     gap: 1em;
     flex-wrap: wrap;
+    justify-content: center;
   }
 }
 
@@ -203,7 +209,7 @@
 } */
 .modalContainer {
   max-width: 600px;
-  width: 100%;
+  width: 50%;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -212,9 +218,10 @@
   background-color: #ffffff;
   box-shadow: 0px 0px 18px 0px rgba(0, 0, 0, 0.75);
   border-radius: 8px;
-  padding: 5%;
+  padding: 2%;
   z-index: 999;
 }
+
 .modalContainer input {
   font-size: 1.2rem;
   margin: 0 auto;

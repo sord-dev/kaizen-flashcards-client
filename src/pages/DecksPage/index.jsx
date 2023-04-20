@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useTheme } from '../../contexts'
 import { useNavigate } from 'react-router-dom'
-import { Modal, NewCardForm } from '../../components'
+import { Modal } from '../../components'
 import { useAuthContext } from '../../contexts/authContext'
 
 export default function DecksPage() {

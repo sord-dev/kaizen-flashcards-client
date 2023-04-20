@@ -107,12 +107,9 @@ function DeckCard({ deck, removeDeck }) {
         <div className='deck-card' style={{ backgroundColor: `${theme.primBG}` }}>
             <h2>{name}</h2>
             <div style={{ display: 'flex', gap: '1em', margin: '6px 12px' }}>
-                <p style={{learn ,color: theme.secText}} onClick={() => goTo(`/decks/${deck_id}`)}><i class="fa-solid fa-book"></i></p>
-                {/* <p style={remove} onClick={() => removeDeck(deck_id)}><i class="fa-solid fa-trash"></i></p> */}
-                <div style={{display: 'flex', marginBottom: "5px"}}>
-                    <p style={{color: theme.setText}}><i class="fa-solid fa-pen-to-square"></i></p>
-                    <p style={{color: theme.secText}} onClick={() => removeDeck(deck_id)}><i class="fa-solid fa-trash"></i></p>
-                </div>
+                <p style={{learn ,color: '#fff'}} onClick={() => goTo(`/decks/${deck_id}`)}><i class="fa-solid fa-book"></i></p>
+                <p style={{color: '#fff', marginRight: '5px'}}><i class="fa-solid fa-pen-to-square"></i></p>
+                <p style={{color: '#fff'}} onClick={() => removeDeck(deck_id)}><i class="fa-solid fa-trash"></i></p>
             </div>
         </div>
     )

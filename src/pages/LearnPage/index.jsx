@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
-import { Card } from '../../components';
+import { Card,ShowResults } from '../../components';
 
 import compare from 'js-levenshtein'
 
@@ -13,15 +13,12 @@ export default function LearnPage() {
     const [done, setDone] = useState(false); // quiz complete?
 
     const [step, setStep] = useState(0); // what question we're on
-
-
     let activeCard = deck?.cards[step];
 
     const [result, setResult] = useState([])
 
     const continueQuiz = (step) => {
         if(step + 1 >= deck?.cards.length) {
-            setDone(true)
             console.log(done)
         } else {
             
@@ -31,7 +28,8 @@ export default function LearnPage() {
     }
 
     const showResult = () => {
-        console.log(result);
+        console.log(result)
+        setDone(true)
     }
 
     const onAnswerSubmit = (e, { answer, card_id }) => {
@@ -52,13 +50,13 @@ export default function LearnPage() {
 
             setDeck(deck)
         }
-
         getDeck()
     }, [])
 
     return (
         <>
             {deck ? <Card continueQuiz={continueQuiz} showResult={showResult} step={step} card={activeCard} onAnswerSubmit={onAnswerSubmit} match={match} show={show} done={done} totalCards={deck.cards.length}/> : null}
+            {done ? <ShowResults result={result}/> : null}
         </>
     )
 }

@@ -57,7 +57,7 @@ export default function DeckPage() {
         try {
             const resp = await fetch(`http://localhost:3000/card/${card_id}`, options)
             if (resp.ok) {
-                let newCards = deck.cards.filter(card => card.deleted !== card_id)
+                let newCards = deck.cards.filter(card => card.card_id !== card_id)
                 setDeck(prev => ({ ...prev, cards: newCards }))
             }
         }

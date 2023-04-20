@@ -72,7 +72,7 @@ export default function DeckPage() {
             <p>{deck.cards.length} cards</p>
             <p>Start learning or add a card to expand your deck</p>
 
-            <div className='buttons-div'>
+            <div className='btnContainer'>
                 <button className='btnTheme' onClick={() => setOpenModal(true)}>+ Add Card</button>
                 {deck?.cards.length ? <button className='btnTheme' onClick={() => navigate('learn')}>Start Learning</button> : null}
             </div>

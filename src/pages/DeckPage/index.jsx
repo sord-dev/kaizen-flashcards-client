@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useTheme } from '../../contexts'
 import { Flashcard, Modal } from '../../components'
 import { useNavigate, useParams } from 'react-router-dom'
+import styles from './style.module.css'
 
 export default function DeckPage() {
     const navigate = useNavigate()
@@ -54,7 +55,7 @@ export default function DeckPage() {
             <p>{deck.cards.length} cards</p>
             <p>Start learning or add a card to expand your deck</p>
 
-            <div className='buttons-div'>
+            <div className={styles['buttons-div']}>
                 <button className='btnTheme' onClick={() => setOpenModal(true)}>+ Add Card</button>
                 {deck?.cards.length ? <button className='btnTheme' onClick={() => navigate('learn')}>Start Learning</button> : null}
             </div>

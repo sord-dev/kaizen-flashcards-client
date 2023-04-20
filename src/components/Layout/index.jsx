@@ -66,7 +66,7 @@ function NavBar({ dropdownActive, setdropdownActive }) {
 
   const linkStyles = ({ isActive }) => ({
     // textDecoration: isActive ? 'underline #FAD97F' : 'none'
-    color: isActive ? `${theme.accentColor}` : `${theme.primText}`, padding: '0 10px 0 10px', border: isActive ? `1px solid ${theme.accentColor}` : "1px solid transparent", borderRadius: 10
+    color: isActive ? `${theme.accentColor}` : `${theme.primText}`, padding: '0 10px 0 10px', borderBottom: isActive ? `1px solid ${theme.accentColor}` : "1px solid transparent",
   })
 
   return (

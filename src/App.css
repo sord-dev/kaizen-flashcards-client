@@ -116,8 +116,8 @@
   place-items: center;
   overflow: hidden;
   border-radius: 20px;
-
   flex-direction: column;
+  box-shadow: rgba(0, 0, 0, 0.45) 0px 10px 15px;
 }
 
 .deck-card > * {

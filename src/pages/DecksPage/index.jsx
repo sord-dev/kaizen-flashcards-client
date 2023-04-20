@@ -68,16 +68,16 @@ export default function DecksPage() {
                 {decks.length ? decks.map(d => (<DeckCard key={d.deck_id} removeDeck={removeDeck} deck={d} />)) : <h2 style={{ color: theme.primText }}>Click add deck to create a deck to learn from!</h2>}
             </div>
 
-            <div>
-                <Modal open={openModal}>
-                    <h2>Add new deck</h2>
-                    <input id='newDeckInput' value={deckName} onChange={(e) => setDeckName(e.target.value)}></input>
-                    <div className='btnContainer'>
-                        <button className='btnTheme' type='submit' id='btnAddDeck' onClick={() => handleCreateDeck(deckName)}>Create Deck</button>
-                        <button className='btnTheme' type='button' id='btnAddDeck' onClick={() => setOpenModal(false)}>Cancel</button>
-                    </div>
-                </Modal>
-            </div>
+
+            <Modal open={openModal}>
+                <h2>Add new deck</h2>
+                <input id='newDeckInput' value={deckName} onChange={(e) => setDeckName(e.target.value)}></input>
+                <div className='btnContainer'>
+                    <button className='btnTheme' type='submit' id='btnAddDeck' onClick={() => handleCreateDeck(deckName)}>Create Deck</button>
+                    <button className='btnTheme' type='button' id='btnAddDeck' onClick={() => setOpenModal(false)}>Cancel</button>
+                </div>
+            </Modal>
+
         </div>
     )
 }

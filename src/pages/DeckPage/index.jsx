@@ -86,27 +86,27 @@ export default function DeckPage() {
                     <h3>Add some cards to study from above!</h3>
             }
 
-            <div>
-                <Modal open={openModal}>
-                    <h2>Add new Card</h2>
-                    <div>
-                        <label>Question</label>
-                        <input value={newCardDetails.question} onChange={(e) => setNewCardDetails(prev => ({ ...prev, question: e.target.value }))} />
-                    </div>
-                    <div>
-                        <label>Description</label>
-                        <input value={newCardDetails.description} onChange={(e) => setNewCardDetails(prev => ({ ...prev, description: e.target.value }))} />
-                    </div>
-                    <div>
-                        <label>Answer</label>
-                        <input value={newCardDetails.answer} onChange={(e) => setNewCardDetails(prev => ({ ...prev, answer: e.target.value }))} />
-                    </div>
-                    <div className='btnContainer'>
-                        <button className='btnTheme' type='submit' id='btnAddDeck' onClick={() => handleCreateCard(newCardDetails.question, newCardDetails.description, newCardDetails.answer)}>Create Card</button>
-                        <button className='btnTheme' type='button' id='btnAddDeck' onClick={() => setOpenModal(false)}>Cancel</button>
-                    </div>
-                </Modal>
-            </div>
+
+            <Modal open={openModal}>
+                <h2>Add new Card</h2>
+                <div>
+                    <label>Question</label>
+                    <input value={newCardDetails.question} onChange={(e) => setNewCardDetails(prev => ({ ...prev, question: e.target.value }))} />
+                </div>
+                <div>
+                    <label>Description</label>
+                    <input value={newCardDetails.description} onChange={(e) => setNewCardDetails(prev => ({ ...prev, description: e.target.value }))} />
+                </div>
+                <div>
+                    <label>Answer</label>
+                    <input value={newCardDetails.answer} onChange={(e) => setNewCardDetails(prev => ({ ...prev, answer: e.target.value }))} />
+                </div>
+                <div className='btnContainer'>
+                    <button className='btnTheme' type='submit' id='btnAddDeck' onClick={() => handleCreateCard(newCardDetails.question, newCardDetails.description, newCardDetails.answer)}>Create Card</button>
+                    <button className='btnTheme' type='button' id='btnAddDeck' onClick={() => setOpenModal(false)}>Cancel</button>
+                </div>
+            </Modal>
+
         </div>
     )
 }

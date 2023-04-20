@@ -26,6 +26,22 @@ export default function DecksPage() {
         setDecks(prev => [...prev, { ...deck, deck_id }])
         setOpenModal(false)
     }
+
+    const removeDeck = async deck_id => {
+        const options = {
+            method: "DELETE"
+        }
+        try {
+            const resp = await fetch(`http://localhost:3000/deck/${deck_id}`, options)
+            if (resp.ok) {
+                let newDecks = decks.filter(deck => deck.deck_id !== deck_id)
+                setDecks(newDecks)
+            }
+        }
+        catch (error) {
+            console.log(error);
+        }
+    }
     useEffect(() => { // get decks 
         const getDecks = async () => {
             let options = { method: "POST", headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ user_id: user.user_id }) }
@@ -49,7 +65,7 @@ export default function DecksPage() {
             <button className='btnTheme' onClick={addDecks}>+ Add Decks</button>
 
             <div className='deck-list'>
-                {decks.length ? decks.map(d => (<DeckCard key={d.deck_id} deck={d} />)) : <h2 style={{ color: theme.primText }}>Click add deck to create a deck to learn from!</h2>}
+                {decks.length ? decks.map(d => (<DeckCard key={d.deck_id} removeDeck={removeDeck} deck={d} />)) : <h2 style={{ color: theme.primText }}>Click add deck to create a deck to learn from!</h2>}
             </div>
 
             <div>
@@ -67,11 +83,18 @@ export default function DecksPage() {
 }
 //<Modal open={openModal} close={() => setOpenModal(false)} title='Add new deck' addDeck={handleCreateDeck}></Modal>
 
-function DeckCard({ deck }) {
+function DeckCard({ deck, removeDeck }) {
     const { theme } = useTheme();
     const remove = {
         border: "none",
         color: "red",
+        cursor: 'pointer',
+        fontSize: '.9em'
+    }
+
+    const learn = {
+        border: "none",
+        color: "green",
         cursor: 'pointer',
         fontSize: '.9em'
     }
@@ -81,12 +104,13 @@ function DeckCard({ deck }) {
 
     return (
         <div className='deck-card'
-            style={{ backgroundColor: `${theme.primBG}`}}
-            onClick={() => goTo(`/decks/${deck_id}`)}
+            style={{ backgroundColor: `${theme.primBG}` }}
         >
             <h2>{name}</h2>
-
-            <p style={remove}>remove</p>
+            <div style={{ display: 'flex', gap: '1em', margin: '6px 12px' }}>
+                <p style={learn} onClick={() => goTo(`/decks/${deck_id}`)}>learn</p>
+                <p style={remove} onClick={() => removeDeck(deck_id)}>remove</p>
+            </div>
         </div>
     )
 }

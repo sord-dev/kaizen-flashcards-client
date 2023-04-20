@@ -30,6 +30,8 @@ export default function DeckPage() {
                 const data = await resp.json();
                 console.log(data);
                 setDeck(prev => ({ ...prev, cards: [...prev.cards, { ...data, question, description, answer }] }))
+                setOpenModal(false)
+                newCardDetails({ question: "", description: "", answer: "" })
             }
         }
         catch {
@@ -48,6 +50,22 @@ export default function DeckPage() {
         getDeck()
     }, [])
 
+    const removeCard = async card_id => {
+        const options = {
+            method: "DELETE"
+        }
+        try {
+            const resp = await fetch(`http://localhost:3000/card/${card_id}`, options)
+            if (resp.ok) {
+                let newCards = deck.cards.filter(card => card.deleted !== card_id)
+                setDeck(prev => ({ ...prev, cards: newCards }))
+            }
+        }
+        catch (error) {
+            console.log(error);
+        }
+    }
+
     return (
         <div style={{ color: theme.primText }}>
             <h1>{deck.name}</h1>
@@ -62,7 +80,7 @@ export default function DeckPage() {
             {
                 deck ?
                     <div className='card-list'>
-                        {deck?.cards.map((card) => <Flashcard key={card.card_id} user_id={card.card_id} {...card} />)}
+                        {deck?.cards.map((card) => <Flashcard key={card.card_id} user_id={card.card_id} {...card} removeCard={removeCard} />)}
                     </div>
                     :
                     <h3>Add some cards to study from above!</h3>

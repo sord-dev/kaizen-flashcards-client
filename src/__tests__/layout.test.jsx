@@ -7,12 +7,19 @@ expect.extend(matchers)
 import { BrowserRouter } from "react-router-dom";
 import Layout from "../components/Layout";
 
+import { ThemeProvider } from "../contexts";
+import { AuthContextProvider } from "../contexts/authContext";
+
 describe("Layout component", () => {
 
     beforeEach(() => {
         render(
             <BrowserRouter>
+            <ThemeProvider>
+            <AuthContextProvider>
                 <Layout />
+            </AuthContextProvider>
+            </ThemeProvider>
             </BrowserRouter>
         );
     });
@@ -21,13 +28,13 @@ describe("Layout component", () => {
         cleanup();
     });
 
-    it("Displays a nav bar with four children", () => {
+    it("Displays a nav bar with two children", () => {
         const navBar = screen.getByRole("navigation");
-        expect(navBar.children.length).toBe(4);
+        expect(navBar.children.length).toBe(2);
     });
 
     it("Displays a profile image", () => {
-        const profileImg = screen.getByAltText("profile image");
+        const profileImg = screen.getByRole("button");
         expect(profileImg).toBeInTheDocument();
     });
 
@@ -38,6 +45,6 @@ describe("Layout component", () => {
 
     it("Active link is underlined", () => {
         const activeLink = screen.getByText("Home");
-        expect(activeLink).toHaveStyle("text-decoration: underline #FAD97F;");
+        expect(activeLink).toHaveClass('active');
     });
 });

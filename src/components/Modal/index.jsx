@@ -7,7 +7,7 @@ export default function Modal({ open, children }) {
     const { theme } = useTheme()
 
     return (
-        <div className='overlay'>
+        <div className='overlay' role='modal'>
             <div className="modalContainer" style={{ backgroundColor: `${theme.primBG}`, color: `${theme.primText}` }}>
                 {children}
             </div>

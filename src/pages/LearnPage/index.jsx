@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom';
 import { Card } from '../../components';
-
+import { useAuthContext } from '../../contexts/authContext';
 import compare from 'js-levenshtein'
 import { useTheme } from '../../contexts';
 
@@ -14,8 +14,6 @@ export default function LearnPage() {
     const [done, setDone] = useState(false); // quiz complete?
 
     const [step, setStep] = useState(0); // what question we're on
-
-
     let activeCard = deck?.cards[step];
 
     const [result, setResult] = useState([])
@@ -32,7 +30,8 @@ export default function LearnPage() {
     }
 
     const showResult = () => {
-        console.log(result);
+        console.log(result)
+
         setDone(true)
     }
 
@@ -45,7 +44,7 @@ export default function LearnPage() {
 
             setShow(true)
             setMatch(hit.match)
-            setResult(prev => [...prev, hit])
+            setResult(prev => [...prev, hit])            
         }
         e.target.reset()
     }
@@ -56,25 +55,52 @@ export default function LearnPage() {
 
             setDeck(deck)
         }
-
         getDeck()
     }, [])
 
     return (
-        <>
+        <>  
             {deck && !done ? <Card continueQuiz={continueQuiz} showResult={showResult} step={step} card={activeCard} onAnswerSubmit={onAnswerSubmit} match={match} show={show} done={done} totalCards={deck.cards.length} /> : <LearnSummary result={result} cards={deck?.cards} />}
+
         </>
     )
 }
 
 function LearnSummary({ result = [], cards = [] }) {
+    const { user } = useAuthContext()
     const { theme } = useTheme();
-
     const correct = result.filter(a => a.match == true).length;
     const wrong = result.filter(a => a.match == false).length;
 
     const percent = 100 / cards.length;
     const accuracy = percent * correct;
+
+    const UpdateStats = async()=>{
+        const options = {
+            method : "PUT",
+            headers :{
+                 'Content-Type': 'application/json' 
+            },
+            body : JSON.stringify({
+                amount : cards.length,
+                correct : correct,
+                user_id : user.user_id
+            })
+        }
+        console.log("options",options)
+        try{
+            const resp = await fetch ("http://localhost:3000/auth/stats",options)
+            if (resp.ok){
+                console.log("good")
+            }
+        }
+        catch(e) {
+            console.log(e)
+        }
+    }
+        useEffect(()=>{
+            UpdateStats();
+        },[])
 
     return (
         <>

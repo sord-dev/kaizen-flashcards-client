@@ -15,8 +15,8 @@ function App() {
           <Route index element={<Pages.HomePage />} />
           <Route path='/login' element={<Pages.Login />} />
           <Route path='/register' element={<Pages.Register />} />
-          <Route path='/stats' element={<Pages.StatsPage />} />
           <Route element={<UseAuth />}>
+          <Route path='/stats' element={<Pages.StatsPage />} />
             <Route path='/decks' element={<Pages.DecksPage />} />
             <Route path='/decks/:deck_id' element={<Pages.DeckPage />} />
             <Route path='/decks/:deck_id/learn' element={<Pages.LearnPage />} />

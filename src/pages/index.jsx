@@ -1,0 +1,8 @@
+export {default as HomePage} from './HomePage'
+export {default as Register} from './Register'
+export {default as Login} from './Login'
+export {default as StatsPage} from './StatsPage'
+export {default as DeckSummary} from './DeckSummary'
+export {default as LearnPage} from './LearnPage'
+export {default as DecksPage} from './DecksPage'
+export {default as DeckPage} from './DeckPage'

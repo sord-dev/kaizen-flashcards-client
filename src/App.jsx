@@ -1,33 +1,29 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import * as Pages from './pages'
 import './App.css'
+import { Routes, Route } from 'react-router-dom'
+import { Layout, UseAuth } from './components'
+import { Navigate } from 'react-router-dom'
+import { useTheme } from './contexts'
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  const { theme } = useTheme()
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+    <div>
+      <style>{`body { background-color: ${theme.primColor};`}</style>
+      <Routes>
+        <Route path="/" element={<Layout />} >
+          <Route index element={<Pages.HomePage />} />
+          <Route path='/login' element={<Pages.Login />} />
+          <Route path='/register' element={<Pages.Register />} />
+          <Route element={<UseAuth />}>
+          <Route path='/stats' element={<Pages.StatsPage />} />
+            <Route path='/decks' element={<Pages.DecksPage />} />
+            <Route path='/decks/:deck_id' element={<Pages.DeckPage />} />
+            <Route path='/decks/:deck_id/learn' element={<Pages.LearnPage />} />
+          </Route>
+        </Route>
+        <Route path={'/*'} element={<Navigate to={'/'} />} />
+      </Routes>
     </div>
   )
 }

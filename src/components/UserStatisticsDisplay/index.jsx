@@ -9,9 +9,7 @@ export default function UserStatisticsDisplay() {
     const { user } = useAuthContext()
     const [userStats,setUserState] = useState({})
     const getUserStats = async()=>{
-        
         try{
-            console.log(user.user_id)
             const resp = await fetch(`http://localhost:3000/auth/stats/${user.user_id}`)
             if (resp.ok){
                 const data = await resp.json();
@@ -19,19 +17,17 @@ export default function UserStatisticsDisplay() {
                     amount : data.amount,
                     correct : data.correct
                 }
+                console.log("here",Obj)
                 setUserState(Obj)
             }
-
         }
         catch(e){
             console.log(e)
         }
     }
-    console.log(userStats)
     useEffect(()=>{
         getUserStats();
     },[])
-    console.log("Yes",(2/5)*100 + "%")
     return (
         <div className={styles['stats-display']} style={{backgroundColor: `${theme.primBG}`, color: `${theme.primText}`}}>
             <h2 style={{color: theme.primText}}>User Statistics</h2>
@@ -45,7 +41,6 @@ export default function UserStatisticsDisplay() {
         </div>
     )
 }
-
 function UserStatGridItem({ tag, description, number }) {
     return (
         <div>

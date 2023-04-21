@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom';
 import { Card } from '../../components';
-
+import { useAuthContext } from '../../contexts/authContext';
 import compare from 'js-levenshtein'
 import { useTheme } from '../../contexts';
+
 export default function LearnPage() {
     const { deck_id } = useParams();
     const [deck, setDeck] = useState(null);
@@ -57,10 +58,7 @@ export default function LearnPage() {
     }, [])
 
     return (
-        <>
-            {deck ? <Card continueQuiz={continueQuiz} showResult={showResult} step={step} card={activeCard} onAnswerSubmit={onAnswerSubmit} match={match} show={show} done={done} totalCards={deck.cards.length}/> : null}
-            {done ? <ShowResults result={result}/> : null}
-
+        <>  
             {deck && !done ? <Card continueQuiz={continueQuiz} showResult={showResult} step={step} card={activeCard} onAnswerSubmit={onAnswerSubmit} match={match} show={show} done={done} totalCards={deck.cards.length} /> : <LearnSummary result={result} cards={deck?.cards} />}
 
         </>
@@ -68,13 +66,40 @@ export default function LearnPage() {
 }
 
 function LearnSummary({ result = [], cards = [] }) {
+    const { user } = useAuthContext()
     const { theme } = useTheme();
-
     const correct = result.filter(a => a.match == true).length;
     const wrong = result.filter(a => a.match == false).length;
 
     const percent = 100 / cards.length;
     const accuracy = percent * correct;
+
+    const UpdateStats = async()=>{
+        const options = {
+            method : "PUT",
+            headers :{
+                 'Content-Type': 'application/json' 
+            },
+            body : JSON.stringify({
+                amount : cards.length,
+                correct : correct,
+                user_id : user.user_id
+            })
+        }
+        console.log("options",options)
+        try{
+            const resp = await fetch ("http://localhost:3000/auth/stats",options)
+            if (resp.ok){
+                console.log("good")
+            }
+        }
+        catch(e) {
+            console.log(e)
+        }
+    }
+        useEffect(()=>{
+            UpdateStats();
+        },[])
 
     return (
         <>

@@ -107,13 +107,8 @@ function DeckCard({ deck, removeDeck }) {
             style={{ backgroundColor: `${theme.primBG}`, minWidth: '320px' }}
         >
             <h2>{name}</h2>
-<<<<<<< HEAD
-            <div style={{ display: 'flex', gap: '1em', margin: '6px 12px' }}>
-                <p style={learn} onClick={() => goTo(`/decks/${deck_id}`)}>yes</p>
-=======
             <div style={{ display: 'flex', gap: '1em', justifyContent: 'center' }}>
                 <p style={learn} onClick={() => goTo(`/decks/${deck_id}`)}><i class="fa-solid fa-book"></i></p>
->>>>>>> 1338a967c2f44b5c00da3b964784a6cf7f3aa3cc
                 <p style={remove} onClick={() => removeDeck(deck_id)}><i class="fa-solid fa-trash"></i></p>
             </div>
         </div>

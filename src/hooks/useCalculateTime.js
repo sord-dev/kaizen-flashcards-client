@@ -8,11 +8,11 @@ export function useCalculateTime() {
         let time;
 
         if (curHr < 12) {
-            time = "おはよう";
+            time = "¡Buenos días!"; // es
         } else if (curHr < 18) {
-            time = "こんばんは";
+            time = "Boa tarde!"; // pt
         } else {
-            time = "お休み";
+            time = "God kväll!"; // swe
         }
 
         setTime(time);

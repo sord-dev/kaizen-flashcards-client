@@ -7,11 +7,12 @@ import { Link } from 'react-router-dom'
 export default function HomePage() {
     const { theme } = useTheme()
     const { user } = useAuthContext()
-    let time = useCalculateTime()
+    let time = useCalculateTime();
+
     return (
         <>
             <div>
-                <h1 style={{ color: `${theme.primText}` }}>{time}, {user ? user.username : 'guest'}</h1>
+                <h1 style={{ color: `${theme.primText}` }}>{time} {user ? user.username : 'guest'}</h1>
             </div>
 
             <OverviewCard />
@@ -61,7 +62,7 @@ function OverviewCard({ streak = 0, reviews = 0, lessons = 0 }) {
 
                 <div className='reviews'>
                     <p><span>Reviews</span></p>
-                    <p><span className='review-color'>{reviews}</span>remaining</p>
+                    <p><span className='review-color'>{reviews}</span> remaining</p>
                 </div>
                 <div className='lessons'>
                     <p><span>Lessons</span></p>

@@ -55,7 +55,7 @@ export default function Layout() {
       </main>
 
       <footer className={styles.footer} style={{ color: `${theme.primText}` }}>
-        <p>made with ❤️ by people <a href="http://" target="_blank" rel="noopener noreferrer"></a></p>
+        <p>made with ❤️ by <a href="http://github.com/sord-dev" target="_blank" rel="noopener noreferrer">stef</a>, <a href="https://github.com/BritishBambi" target="_blank" rel="noopener noreferrer">jojo</a>, <a href="https://github.com/farhan3311" target="_blank" rel="noopener noreferrer">jack</a> and <a href="https://github.com/wag154" target="_blank" rel="noopener noreferrer">farhan</a> </p>
 
         <p>kaizen</p>
       </footer>
@@ -76,7 +76,6 @@ function NavBar({ dropdownActive, setdropdownActive }) {
     <header  >
       <nav >
         <NavLink to="/" style={linkStyles}>Home</NavLink>
-        <NavLink to="stats" style={linkStyles}>Statistics</NavLink>
         <NavLink to="decks" style={linkStyles}>Decks</NavLink>
       </nav>
       <div>

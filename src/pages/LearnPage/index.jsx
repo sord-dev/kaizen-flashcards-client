@@ -38,8 +38,9 @@ export default function LearnPage() {
         e.preventDefault()
         const userAnswer = new FormData(e.target).get('userAnawer')
         if (userAnswer) {
-            let hit = { card_id, match: compare(userAnswer.toLowerCase(), answer.toLowerCase()) <= 2 ? true : false } // for server
-            
+            let hit = { card_id, match: compare(userAnswer.toLowerCase(), answer.toLowerCase()) <= 2 ? true : false } 
+            // compare user input to answer using js-levenshtein, the lower the value, the closer the match
+
             setShow(true)
             setMatch(hit.match)
             setResult(prev => [...prev, hit])            

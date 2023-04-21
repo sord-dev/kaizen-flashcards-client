@@ -1,6 +1,8 @@
 .user-form {
   background-color: #f3f3f327;
   margin: 0 auto;
+  margin-top: 32px;
+  margin-bottom: 32px;
   border-radius: 4px;
   display: flex;
   flex-direction: column;

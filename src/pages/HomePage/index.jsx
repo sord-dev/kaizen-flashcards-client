@@ -24,7 +24,7 @@ export default function HomePage() {
                     </div>
                     <div className='review-block'>
                         <p>Review all the things you've learnt before</p>
-                        <p><span className='review-color'>120</span> to review</p>
+                        <p><span className='review-color'>11</span> to review</p>
                     </div>
                     <Link to='/decks'>Go Review</Link>
                 </div>
@@ -35,7 +35,7 @@ export default function HomePage() {
                     </div>
                     <div className='learn-block'>
                         <p>Learn new topics</p>
-                        <p><span className='learn-color'>120</span> to learn</p>
+                        <p><span className='learn-color'>5</span> to learn</p>
                     </div>
                     <Link to='/decks'>Go Learn</Link>
                 </div>
@@ -45,7 +45,7 @@ export default function HomePage() {
 }
 
 
-function OverviewCard({ streak = 0, reviews = 0, lessons = 0 }) {
+function OverviewCard({ streak = 0, reviews = 11, lessons = 5 }) {
     const { theme } = useTheme()
     return (
         <div className='study-quota' style={{ backgroundColor: `${theme.primBG}`, color: `${theme.primText}` }}>

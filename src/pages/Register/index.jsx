@@ -4,7 +4,12 @@ import { Link } from 'react-router-dom'
 import { UserForm } from '../../components'
 import { useAuthContext } from '../../contexts/authContext'
 
+import { useTheme } from '../../contexts'
+
 export default function Login() {
+
+    const { theme } = useTheme()
+
     const { register, error } = useAuthContext()
 
     const handleSubmit = async e => {
@@ -20,7 +25,7 @@ export default function Login() {
     return (
         <div>
             <UserForm onSubmit={handleSubmit} error={error} buttonLabel='Register'>
-                <p>Already have an account? <Link to={'/login'}>Login</Link></p>
+                <p style={{ color: `${theme.primText}` }}>Already have an account? <Link to={'/login'} style={{ color: `${theme.linkForm}` }}>Login</Link></p>
             </UserForm>
         </div>
     )

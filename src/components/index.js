@@ -7,3 +7,5 @@ export {default as UserStatisticsDisplay} from './UserStatisticsDisplay'
 export {default as Card} from './Card'
 export {default as Modal} from './Modal'
 export {default as Flashcard} from './Flashcard'
+export {default as ShowResults} from "./ShowResults"
+export {default as ShowResultCard} from "./ShowResultCard"

@@ -77,6 +77,7 @@ function NavBar({ dropdownActive, setdropdownActive }) {
       <nav >
         <NavLink to="/" style={linkStyles}>Home</NavLink>
         <NavLink to="decks" style={linkStyles}>Decks</NavLink>
+        <NavLink to ="/stats" style = {linkStyles}>stats</NavLink> 
       </nav>
       <div>
         <button className={styles['dropbtn']} onClick={() => setdropdownActive(prev => !prev)}>

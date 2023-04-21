@@ -114,3 +114,4 @@ function DeckCard({ deck, removeDeck }) {
         </div>
     )
 }
+//<i class="fa-solid fa-book-blank"></i>

@@ -13,6 +13,7 @@ export default function DeckPage() {
 
     const handleCreateCard = async () => {
         const { question, description, answer } = newCardDetails;
+        if(!question|| !description || !answer) return;
         const options = {
             method: "POST",
             headers: {

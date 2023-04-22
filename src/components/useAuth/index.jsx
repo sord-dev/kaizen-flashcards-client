@@ -1,14 +1,20 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
-import { Outlet, Navigate } from 'react-router-dom'
+import { Outlet } from 'react-router-dom'
 import { useAuthContext } from '../../contexts/authContext'
 
 export default function UseAuth() {
-    const { user } = useAuthContext()
+    const { user, logout } = useAuthContext()
 
     return (
         <>
-            {user?.username ? <Outlet /> : <Navigate to={'/login'} />}
+            {user?.username ? <Outlet /> : <StripUser logout={logout} />}
         </>
     )
+}
+
+function StripUser({ logout }) {
+    useEffect(() => { // as soon as component loads, logout
+        logout()
+    }, [])
 }

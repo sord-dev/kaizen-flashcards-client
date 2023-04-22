@@ -34,7 +34,9 @@ nav > a:hover{
   color: #FAD97F  ;
 }
 
-.fa-user{
+
+.fa-user,
+.fa-sun{
   color: #11C3EA;
   font-size: 2rem;
 }
@@ -54,12 +56,6 @@ nav > a:hover{
   color: rgba(255, 0, 0, 0.656);
 }
 
-.profile-img {
-  height: 50px;
-  width: 50px;
-  border-radius: 50%;
-}
-
 .study-quota{
   background-color: #363842;
   font-size: 1.2rem;
@@ -71,7 +67,7 @@ nav > a:hover{
   padding: 1rem;
 }
 
-.study-quota > a{
+.study-quota > a {
   display: flex;
   flex-direction: column;
   align-items: flex;
@@ -89,7 +85,6 @@ nav > a:hover{
   align-self: flex-end;
 }
 
-
 .quota-title{
   font-size: 1.2rem;
   font-weight: 700;
@@ -100,8 +95,6 @@ nav > a:hover{
   font-size: 1.2rem;
   color: #11C3EA;
 }
-
-
 
 .quota-block1{
   margin: 1rem;
@@ -219,3 +212,4 @@ nav > a:hover{
  padding: 2px 4px;
  color: #0000009b;
 }
+

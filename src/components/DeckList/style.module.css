@@ -1,0 +1,41 @@
+.deck-card {
+  width: 20vw;
+  height: auto;
+  position: relative;
+  display: flex;
+  place-content: center;
+  place-items: center;
+  overflow: hidden;
+  border-radius: 20px;
+  flex-direction: column;
+  box-shadow: rgba(0, 0, 0, 0.45) 0px 10px 15px;
+}
+
+.deck-card > * {
+  z-index: 1;
+}
+
+.deck-card h2 {
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .buttons-div button {
+    padding: 0 2.6rem;
+  }
+}
+
+.deck-list {
+  display: grid;
+  gap: 1em;
+  grid-template-columns: 1fr 1fr;
+}
+
+@media (max-width: 768px) {
+  .deck-list {
+    display: flex;
+    gap: 1em;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}

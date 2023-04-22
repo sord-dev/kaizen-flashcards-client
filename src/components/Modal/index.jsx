@@ -9,7 +9,7 @@ export default function Modal({ open, children }) {
 
     return (
         <div className='overlay'>
-            <div className="modalContainer" style={{ backgroundColor: `${theme.primBG}`, color: `${theme.primText}` }}>
+            <div className={styles["modalContainer"]} style={{ backgroundColor: `${theme.primBG}`, color: `${theme.primText}` }}>
                 {children}
             </div>
         </div>

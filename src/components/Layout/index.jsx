@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { NavLink, Outlet } from 'react-router-dom'
 import styles from './styles.module.css'
 import { useState } from 'react'
@@ -46,7 +46,7 @@ function NavBar({ dropdownActive, setdropdownActive, handleChange, checked }) {
   })
 
   return (
-    <header  >
+    <header  className={styles['navbar']}>
       <nav >
         <NavLink to="/" style={linkStyles}>Home</NavLink>
         <NavLink to="decks" style={linkStyles}>Decks</NavLink>

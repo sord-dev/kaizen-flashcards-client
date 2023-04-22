@@ -9,43 +9,14 @@
   --accColor: "#FAD97F";
 }
 
-.addCard {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-direction: column;
-}
-
-.addCard :nth-child(n) {
-  width: 30%;
-}
-
-.addCard input {
-  text-align: center;
-}
-
-.addCard :nth-child(7) {
-  transition: 0.5s;
-  border-radius: 8px;
-  margin-top: 10px;
-  width: 10%;
-  background-image: linear-gradient(
-    90.88deg,
-    #455eb5 9.16%,
-    #5643cc 43.89%,
-    #673fd7 64.72%
-  );
-  color: white;
-}
 
 /* DecksPage */
 .btnTheme,
 .buttons-div button {
   margin: 2%;
-  padding: 4px 6px;
+  padding: 8px 16px;
   border-radius: 4px;
   font-size: 1.5rem;
-  width: 10rem;
   color: #333;
   box-shadow: 0 0 6px 0 rgba(157, 96, 212, 0.5);
   border: solid 3px transparent;
@@ -117,7 +88,6 @@
   grid-template-columns: repeat(2, 1fr);
 }
 
-
 .card-content {
   word-break: true;
   /* height:75%; */
@@ -126,38 +96,6 @@
   overflow: auto;
 }
 
-/* Model */
-
-.modalContainer {
-  max-width: 600px;
-  width: 50%;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  display: table-column;
-  background-color: #ffffff;
-  box-shadow: 0px 0px 18px 0px rgba(0, 0, 0, 0.75);
-  border-radius: 8px;
-  padding: 2%;
-  z-index: 999;
-}
-
-.modalContainer input {
-  font-size: 1.2rem;
-  margin: 0 auto;
-  padding: 1.5rem 2rem;
-  border-radius: 0.2rem;
-  border: 1px solid #151723;
-  width: auto;
-  display: block;
-  transition: all 0.3s;
-}
-.closeBtn {
-  position: fixed;
-  top: 8px;
-  right: 8px;
-}
 .btnContainer {
   display: flex;
   padding: 1rem 1rem;

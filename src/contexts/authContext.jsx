@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 const AuthContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
-    const [user, setUser] = useState();
+    const [user, setUser] = useState(null);
     const [error, setError] = useState(null);
     const redirect = useNavigate()
 
@@ -40,7 +40,7 @@ export const AuthContextProvider = ({ children }) => {
 
     const logout = async () => {
         localStorage.removeItem('user');
-        setUser({})
+        setUser(null)
 
         redirect('/login');
     }

@@ -1,0 +1,50 @@
+.learn-summary {
+    background-color: rgb(54, 56, 66);
+    padding: 16px 32px;
+    width: 50%;
+    margin: 0 auto;
+    border-radius: 4px;
+    text-align: left;
+    max-height: 600px;
+    overflow-y: scroll;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.learn-summary::-webkit-scrollbar {
+    display: none;
+}
+
+.learn-summary-stats {
+    text-align: center;
+}
+
+.learn-summary-stats h3{
+    margin: 0;
+}
+
+.learn-summary-stats p {
+    font-weight: 700;
+    font-size: 1.5em;
+}
+
+.learn-summary-question {
+    display: flex;
+    flex-direction: column;
+}
+
+.learn-summary-question h4 {
+    margin: 0;
+}
+
+.right {
+    color: rgba(19, 181, 19, 0.816);
+}
+
+.wrong {
+    color: rgba(255, 0, 0, 0.687);
+}
+.learn-summary h4,
+.learn-summary-question-metadata p:nth-child(2) {
+    font-size: 1.2em;
+}

@@ -60,7 +60,7 @@ function NavBar({ dropdownActive, setdropdownActive, handleChange, checked }) {
       <div>
 
         <div style={{ display: 'flex', gap: '8px' }}>
-          <button className={styles['dropbtn']} onClick={() => setdropdownActive(prev => !prev)}>
+          <button role='profile-dropdown' className={styles['dropbtn']} onClick={() => setdropdownActive(prev => !prev)}>
             <i className="fa-regular fa-user"></i>
           </button>
           <Switch handleChange={handleChange} checked={checked} />

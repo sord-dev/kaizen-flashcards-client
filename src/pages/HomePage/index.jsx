@@ -47,7 +47,7 @@ export default function HomePage() {
 
 function OverviewCard({ streak = 0, reviews = 0, lessons = 0 }) {
     const { theme } = useTheme()
-    console.log(streak);
+
     return (
         <div className='study-quota' style={{ backgroundColor: `${theme.primBG}`, color: `${theme.primText}` }}>
             <div className='quota-block1'>

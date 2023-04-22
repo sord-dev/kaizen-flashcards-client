@@ -11,7 +11,6 @@ export default function Layout() {
   const { theme, setTheme, themes } = useTheme()
   const [checked, setChecked] = useState(theme.darkMode)
 
-
   function handleChange() {
     if (checked) {
       setTheme(themes.light)
@@ -22,10 +21,6 @@ export default function Layout() {
       setChecked(true)
     }
   }
-
-  useEffect(() => {
-    console.log(dropdownActive);
-  }, [dropdownActive])
 
   return (
     <div style={{ color: `${theme.secColor}` }}>
@@ -40,19 +35,7 @@ export default function Layout() {
   )
 }
 
-
-function Footer() {
-  const { theme } = useTheme();
-
-  return (
-    <footer className={styles.footer} style={{ color: `${theme.primText}` }}>
-      <p>Made with ❤️ by <a href="http://github.com/sord-dev" target="_blank" rel="noopener noreferrer">stef</a>, <a href="https://github.com/BritishBambi" target="_blank" rel="noopener noreferrer">jojo</a>, <a href="https://github.com/farhan3311" target="_blank" rel="noopener noreferrer">jack</a> and <a href="https://github.com/wag154" target="_blank" rel="noopener noreferrer">farhan</a> </p>
-
-      <p>Kaizen | Constant Improvement</p>
-    </footer>
-  )
-}
-
+// NavBar Layout Component
 function NavBar({ dropdownActive, setdropdownActive, handleChange, checked }) {
   const { theme } = useTheme()
   const { user, logout } = useAuthContext()
@@ -83,7 +66,10 @@ function NavBar({ dropdownActive, setdropdownActive, handleChange, checked }) {
           {
             user?.username ?
               (
+               <>
+               <NavLink to={'stats'} >Stats</NavLink>
                 <NavLink to={'login'} onClick={logout}>Logout</NavLink>
+               </>
               )
               :
               (
@@ -97,5 +83,18 @@ function NavBar({ dropdownActive, setdropdownActive, handleChange, checked }) {
         </div>
       </div>
     </header>
+  )
+}
+
+// Footer Layout Component
+function Footer() {
+  const { theme } = useTheme();
+
+  return (
+    <footer className={styles.footer} style={{ color: `${theme.primText}` }}>
+      <p>Made with ❤️ by <a href="http://github.com/sord-dev" target="_blank" rel="noopener noreferrer">stef</a>, <a href="https://github.com/BritishBambi" target="_blank" rel="noopener noreferrer">jojo</a>, <a href="https://github.com/farhan3311" target="_blank" rel="noopener noreferrer">jack</a> and <a href="https://github.com/wag154" target="_blank" rel="noopener noreferrer">farhan</a> </p>
+
+      <p>Kaizen | Constant Improvement</p>
+    </footer>
   )
 }

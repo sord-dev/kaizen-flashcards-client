@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useTheme } from '../../contexts'
-import { useNavigate } from 'react-router-dom'
-import { Modal } from '../../components'
+
+import { DeckList, Modal } from '../../components'
 import { useAuthContext } from '../../contexts/authContext'
 
 export default function DecksPage() {
@@ -11,18 +11,11 @@ export default function DecksPage() {
     const [deckName, setDeckName] = useState()
     const { theme } = useTheme();
 
-    const addDecks = (e) => {
-        e.preventDefault()
-
-        setOpenModal(true)
-    }
-
     const handleCreateDeck = async (name) => {
         const deck = { user_id: user.user_id, name }
         let options = { method: "POST", headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(deck) }
         let deck_id = await (await fetch("http://localhost:3000/deck/new", options)).json()
 
-        console.log(deck_id);
         setDecks(prev => [...prev, { ...deck, deck_id }])
         setOpenModal(false)
     }
@@ -42,6 +35,7 @@ export default function DecksPage() {
             console.log(error);
         }
     }
+
     useEffect(() => { // get decks 
         const getDecks = async () => {
             let options = { method: "POST", headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ user_id: user.user_id }) }
@@ -49,7 +43,7 @@ export default function DecksPage() {
 
             if (res.ok) {
                 let decks = await res.json()
-                console.log(decks);
+
                 setDecks(decks)
             } else {
                 console.log(await res.text());
@@ -59,59 +53,24 @@ export default function DecksPage() {
         getDecks()
     }, [])
 
-
     return (
-        <div>
-            <button className='btnTheme' onClick={addDecks}>+ Add Decks</button>
+        <div style={{ color: theme.primText }}>
+            <h3>Click the learn button on a deck to start learning or add a new deck!</h3>
+            <p>{decks.length >= 1 ? `Currently ${decks.length} deck.` : `Currently ${decks.length} decks.`}</p>
+            <button className='btnTheme' onClick={() => setOpenModal(true)}>+ Add Decks</button>
 
-            <div className='deck-list'>
-                {decks.length ? decks.map(d => (<DeckCard key={d.deck_id} removeDeck={removeDeck} deck={d} />)) : <h2 style={{ color: theme.primText }}>Click add deck to create a deck to learn from!</h2>}
-            </div>
-
+            <DeckList decks={decks} removeDeck={removeDeck}/>
 
             <Modal open={openModal}>
                 <h2>Add new deck</h2>
-                <input id='newDeckInput' value={deckName} onChange={(e) => setDeckName(e.target.value)}></input>
+                <input value={deckName} onChange={(e) => setDeckName(e.target.value)} />
+
                 <div className='btnContainer'>
-                    <button className='btnTheme' type='submit' id='btnAddDeck' onClick={() => handleCreateDeck(deckName)}>Create Deck</button>
-                    <button className='btnTheme' type='button' id='btnAddDeck' onClick={() => setOpenModal(false)}>Cancel</button>
+                    <button className='btnTheme' type='submit' onClick={() => handleCreateDeck(deckName)}>Create Deck</button>
+                    <button className='btnTheme' type='button' onClick={() => setOpenModal(false)}>Cancel</button>
                 </div>
             </Modal>
-
         </div>
     )
 }
-//<Modal open={openModal} close={() => setOpenModal(false)} title='Add new deck' addDeck={handleCreateDeck}></Modal>
 
-function DeckCard({ deck, removeDeck }) {
-    const { theme } = useTheme();
-    const remove = {
-        border: "none",
-        color: "red",
-        cursor: 'pointer',
-        fontSize: '.9em'
-    }
-
-    const learn = {
-        border: "none",
-        color: "green",
-        cursor: 'pointer',
-        fontSize: '.9em'
-    }
-    const goTo = useNavigate();
-
-    let { name, deck_id } = deck;
-
-    return (
-        <div className='cardTheme'
-            style={{ backgroundColor: `${theme.primBG}`, minWidth: '320px' }}
-        >
-            <h2>{name}</h2>
-            <div style={{ display: 'flex', gap: '1em', justifyContent: 'center' }}>
-                <p style={learn} onClick={() => goTo(`/decks/${deck_id}`)}><i class="fa-solid fa-book"></i></p>
-                <p style={remove} onClick={() => removeDeck(deck_id)}><i class="fa-solid fa-trash"></i></p>
-            </div>
-        </div>
-    )
-}
-//<i class="fa-solid fa-book-blank"></i>

@@ -25,11 +25,9 @@ export default function Layout() {
   return (
     <div style={{ color: `${theme.secColor}` }}>
       <NavBar dropdownActive={dropdownActive} setdropdownActive={setdropdownActive} handleChange={handleChange} checked={checked} />
-
       <main>
         <Outlet />
       </main>
-
       <Footer />
     </div>
   )

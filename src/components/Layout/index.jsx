@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react'
 import { NavLink, Outlet } from 'react-router-dom'
 import styles from './styles.module.css'
-import Switch from "react-switch"
 import { useState } from 'react'
 import { useTheme } from '../../contexts'
 import { useAuthContext } from '../../contexts/authContext'
+import Switch from '../Switch'
 
 export default function Layout() {
   const [dropdownActive, setdropdownActive] = useState(false)
@@ -29,41 +29,31 @@ export default function Layout() {
 
   return (
     <div style={{ color: `${theme.secColor}` }}>
-      <NavBar dropdownActive={dropdownActive} setdropdownActive={setdropdownActive} />
-      <div style={{ display: 'flex', justifyContent: 'end', marginTop: 30 }}>
-        <label htmlFor="material-switch" style={{ display: 'flex', alignItems: 'center' }}>
-          <span style={{ marginRight: 10, color: theme.primText }}>Dark Mode </span>
-          <Switch
-            checked={checked}
-            onChange={(e) => handleChange(e)}
-            onColor="#86d3ff"
-            onHandleColor="#2693e6"
-            handleDiameter={30}
-            uncheckedIcon={false}
-            checkedIcon={false}
-            boxShadow="0px 1px 5px rgba(0, 0, 0, 0.6)"
-            activeBoxShadow="0px 0px 1px 10px rgba(0, 0, 0, 0.2)"
-            height={20}
-            width={48}
-            className="react-switch"
-            id="material-switch"
-          />
-        </label>
-      </div>
+      <NavBar dropdownActive={dropdownActive} setdropdownActive={setdropdownActive} handleChange={handleChange} checked={checked} />
+
       <main>
         <Outlet />
       </main>
 
-      <footer className={styles.footer} style={{ color: `${theme.primText}` }}>
-        <p>made with ❤️ by <a href="http://github.com/sord-dev" target="_blank" rel="noopener noreferrer">stef</a>, <a href="https://github.com/BritishBambi" target="_blank" rel="noopener noreferrer">jojo</a>, <a href="https://github.com/farhan3311" target="_blank" rel="noopener noreferrer">jack</a> and <a href="https://github.com/wag154" target="_blank" rel="noopener noreferrer">farhan</a> </p>
-
-        <p>kaizen</p>
-      </footer>
+      <Footer />
     </div>
   )
 }
 
-function NavBar({ dropdownActive, setdropdownActive }) {
+
+function Footer() {
+  const { theme } = useTheme();
+
+  return (
+    <footer className={styles.footer} style={{ color: `${theme.primText}` }}>
+      <p>Made with ❤️ by <a href="http://github.com/sord-dev" target="_blank" rel="noopener noreferrer">stef</a>, <a href="https://github.com/BritishBambi" target="_blank" rel="noopener noreferrer">jojo</a>, <a href="https://github.com/farhan3311" target="_blank" rel="noopener noreferrer">jack</a> and <a href="https://github.com/wag154" target="_blank" rel="noopener noreferrer">farhan</a> </p>
+
+      <p>Kaizen | Constant Improvement</p>
+    </footer>
+  )
+}
+
+function NavBar({ dropdownActive, setdropdownActive, handleChange, checked }) {
   const { theme } = useTheme()
   const { user, logout } = useAuthContext()
 
@@ -77,12 +67,18 @@ function NavBar({ dropdownActive, setdropdownActive }) {
       <nav >
         <NavLink to="/" style={linkStyles}>Home</NavLink>
         <NavLink to="decks" style={linkStyles}>Decks</NavLink>
-        <NavLink to ="/stats" style = {linkStyles}>stats</NavLink> 
+        <NavLink to="/stats" style={linkStyles}>Stats</NavLink>
       </nav>
       <div>
-        <button className={styles['dropbtn']} onClick={() => setdropdownActive(prev => !prev)}>
-          <i className="fa-regular fa-user"></i>
-        </button>
+
+        <div style={{ display: 'flex', gap: '1em' }}>
+          <button className={styles['dropbtn']} onClick={() => setdropdownActive(prev => !prev)}>
+            <i className="fa-regular fa-user"></i>
+          </button>
+          <Switch handleChange={handleChange} checked={checked} />
+        </div>
+
+
         <div id="myDropdown" className={dropdownActive ? `${styles["dropdown-content"]} ${styles.active}` : `${styles["dropdown-content"]}`}>
           {
             user?.username ?

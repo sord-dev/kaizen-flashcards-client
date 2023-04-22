@@ -34,7 +34,9 @@ nav > a:hover{
   color: #FAD97F  ;
 }
 
-.fa-user{
+
+.fa-user,
+.fa-sun{
   color: #11C3EA;
   font-size: 2rem;
 }
@@ -219,3 +221,4 @@ nav > a:hover{
  padding: 2px 4px;
  color: #0000009b;
 }
+

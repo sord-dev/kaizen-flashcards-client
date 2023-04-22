@@ -18,6 +18,7 @@ export default function DecksPage() {
 
         setDecks(prev => [...prev, { ...deck, deck_id }])
         setOpenModal(false)
+        setDeckName("")
     }
 
     const removeDeck = async deck_id => {

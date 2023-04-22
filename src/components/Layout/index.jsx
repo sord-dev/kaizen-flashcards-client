@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { NavLink, Outlet } from 'react-router-dom'
 import styles from './styles.module.css'
 import { useState } from 'react'
@@ -14,13 +14,20 @@ export default function Layout() {
   function handleChange() {
     if (checked) {
       setTheme(themes.light)
+      localStorage.setItem('theme', JSON.stringify(themes.light))
       setChecked(false)
     }
     else {
       setTheme(themes.dark)
+      localStorage.setItem('theme', JSON.stringify(themes.dark))
       setChecked(true)
     }
   }
+
+  useEffect(() => {
+   let savedTheme = localStorage.getItem('theme');
+   if(savedTheme) setChecked(JSON.parse(localStorage.getItem('theme')).darkMode);
+  }, [])
 
   return (
     <div style={{ color: `${theme.secColor}` }}>
@@ -52,7 +59,7 @@ function NavBar({ dropdownActive, setdropdownActive, handleChange, checked }) {
       </nav>
       <div>
 
-        <div style={{ display: 'flex', gap: '1em' }}>
+        <div style={{ display: 'flex', gap: '8px' }}>
           <button className={styles['dropbtn']} onClick={() => setdropdownActive(prev => !prev)}>
             <i className="fa-regular fa-user"></i>
           </button>
@@ -60,7 +67,7 @@ function NavBar({ dropdownActive, setdropdownActive, handleChange, checked }) {
         </div>
 
 
-        <div id="myDropdown" className={dropdownActive ? `${styles["dropdown-content"]} ${styles.active}` : `${styles["dropdown-content"]}`}>
+        <div className={dropdownActive ? `${styles["dropdown-content"]} ${styles.active}` : `${styles["dropdown-content"]}`} onClick={() => setdropdownActive(false)}>
           {
             user?.username ?
               (

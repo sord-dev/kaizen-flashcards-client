@@ -97,7 +97,7 @@ function Footer() {
 
   return (
     <footer className={styles.footer} style={{ color: `${theme.primText}` }}>
-      <p>Made with ❤️ by <a href="http://github.com/sord-dev" target="_blank" rel="noopener noreferrer">stef</a>, <a href="https://github.com/BritishBambi" target="_blank" rel="noopener noreferrer">jojo</a>, <a href="https://github.com/farhan3311" target="_blank" rel="noopener noreferrer">jack</a> and <a href="https://github.com/wag154" target="_blank" rel="noopener noreferrer">farhan</a> </p>
+      <p>Made with ❤️ by <a href="http://github.com/sord-dev" target="_blank" rel="noopener noreferrer">stef</a>, <a href="https://github.com/BritishBambi" target="_blank" rel="noopener noreferrer">jojo</a>, <a href="https://github.com/wag154" target="_blank" rel="noopener noreferrer">jack</a> and <a href="https://github.com/farhan3311" target="_blank" rel="noopener noreferrer">farhan</a> </p>
 
       <p>Kaizen | Constant Improvement</p>
     </footer>

@@ -9,9 +9,9 @@ export default function Modal({ open, children }) {
 
     return (
         <div className='overlay'>
-            <div className={styles["modalContainer"]} style={{ backgroundColor: `${theme.primBG}`, color: `${theme.primText}` }}>
+            <form onSubmit={e => e.preventDefault()} className={styles["modalContainer"]} style={{ backgroundColor: `${theme.primBG}`, color: `${theme.primText}` }}>
                 {children}
-            </div>
+            </form>
         </div>
     )
 }

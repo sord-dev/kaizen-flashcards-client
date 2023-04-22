@@ -12,6 +12,7 @@ export default function DecksPage() {
     const { theme } = useTheme();
 
     const handleCreateDeck = async (name) => {
+        if(!name) return;
         const deck = { user_id: user.user_id, name }
         let options = { method: "POST", headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(deck) }
         let deck_id = await (await fetch("http://localhost:3000/deck/new", options)).json()

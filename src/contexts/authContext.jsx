@@ -39,7 +39,7 @@ export const AuthContextProvider = ({ children }) => {
     }
 
     const logout = async () => {
-        localStorage.clear();
+        localStorage.removeItem('user');
         setUser({})
 
         redirect('/login');

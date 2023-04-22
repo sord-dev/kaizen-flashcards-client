@@ -15,7 +15,7 @@ export default function HomePage() {
                 <h1 style={{ color: `${theme.primText}` }}>{time} {user ? user.username : 'guest'}</h1>
             </div>
 
-            <OverviewCard />
+            {user ? <OverviewCard streak={user.streak.count}/> : <OverviewCard />}
             <div className='block-container' >
                 <div className='review' style={{ backgroundColor: `${theme.primBG}`, color: `${theme.primText}` }}>
                     <div className='review-block'>
@@ -47,6 +47,7 @@ export default function HomePage() {
 
 function OverviewCard({ streak = 0, reviews = 0, lessons = 0 }) {
     const { theme } = useTheme()
+    console.log(streak);
     return (
         <div className='study-quota' style={{ backgroundColor: `${theme.primBG}`, color: `${theme.primText}` }}>
             <div className='quota-block1'>
